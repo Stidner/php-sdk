@@ -1,13 +1,17 @@
 {
-  "name": "stinder/php-sdk",
+  "name": "stidner/php-sdk",
   "authors": [
     {
       "name": "Bartłomiej Kiełbasa",
       "email": "bartlomiej.kielbasa@gmail.com"
     }
   ],
-  "require": {},
+  "require": {
+    "php": ">=5.5.0",
+    "lib-curl": "*",
+    "nategood/httpful": "^0.2.20"
+  },
   "autoload": {
-    "psr-4": {"Stinder\\": "src/"}
+    "psr-4": {"Stidner\\": "src/"}
   }
 }
