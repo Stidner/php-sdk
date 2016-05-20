@@ -57,6 +57,7 @@ class Options implements ToArrayInterface
     public function setColorButton($colorButton)
     {
         $this->colorButton = $colorButton;
+
         return $this;
     }
 
@@ -76,6 +77,7 @@ class Options implements ToArrayInterface
     public function setColorButtonText($colorButtonText)
     {
         $this->colorButtonText = $colorButtonText;
+
         return $this;
     }
 
@@ -95,6 +97,7 @@ class Options implements ToArrayInterface
     public function setColorCheckbox($colorCheckbox)
     {
         $this->colorCheckbox = $colorCheckbox;
+
         return $this;
     }
 
@@ -114,6 +117,7 @@ class Options implements ToArrayInterface
     public function setColorCheckboxCheckmarks($colorCheckboxCheckmarks)
     {
         $this->colorCheckboxCheckmarks = $colorCheckboxCheckmarks;
+
         return $this;
     }
 
@@ -133,6 +137,7 @@ class Options implements ToArrayInterface
     public function setColorHeader($colorHeader)
     {
         $this->colorHeader = $colorHeader;
+
         return $this;
     }
 
@@ -152,6 +157,7 @@ class Options implements ToArrayInterface
     public function setColorLink($colorLink)
     {
         $this->colorLink = $colorLink;
+
         return $this;
     }
 
@@ -171,6 +177,7 @@ class Options implements ToArrayInterface
     public function setColorBackground($colorBackground)
     {
         $this->colorBackground = $colorBackground;
+
         return $this;
     }
 
@@ -179,13 +186,13 @@ class Options implements ToArrayInterface
         $data = [];
 
         $optionalParameters = [
-            'color_button' => 'colorButton',
-            'color_button_text' => 'colorButtonText',
-            'color_checkbox' => 'colorCheckbox',
+            'color_button'              => 'colorButton',
+            'color_button_text'         => 'colorButtonText',
+            'color_checkbox'            => 'colorCheckbox',
             'color_checkbox_checkmarks' => 'colorCheckboxCheckmarks',
-            'color_header' => 'colorHeader',
-            'color_link' => 'colorLink',
-            'color_background' => 'colorBackground',
+            'color_header'              => 'colorHeader',
+            'color_link'                => 'colorLink',
+            'color_background'          => 'colorBackground',
         ];
 
         foreach ($optionalParameters as $key => $value) {

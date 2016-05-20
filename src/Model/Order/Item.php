@@ -35,12 +35,12 @@ class Item implements ToArrayInterface
     protected $description;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $weight;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $quantity;
 
@@ -50,12 +50,12 @@ class Item implements ToArrayInterface
     protected $quantityUnit;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $unitPrice;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $taxRate;
 
@@ -80,6 +80,7 @@ class Item implements ToArrayInterface
     public function setType($type)
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -99,6 +100,7 @@ class Item implements ToArrayInterface
     public function setArtno($artno)
     {
         $this->artno = $artno;
+
         return $this;
     }
 
@@ -118,6 +120,7 @@ class Item implements ToArrayInterface
     public function setSku($sku)
     {
         $this->sku = $sku;
+
         return $this;
     }
 
@@ -137,6 +140,7 @@ class Item implements ToArrayInterface
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -156,6 +160,7 @@ class Item implements ToArrayInterface
     public function setDescription($description)
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -175,6 +180,7 @@ class Item implements ToArrayInterface
     public function setWeight($weight)
     {
         $this->weight = $weight;
+
         return $this;
     }
 
@@ -194,6 +200,7 @@ class Item implements ToArrayInterface
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+
         return $this;
     }
 
@@ -213,6 +220,7 @@ class Item implements ToArrayInterface
     public function setQuantityUnit($quantityUnit)
     {
         $this->quantityUnit = $quantityUnit;
+
         return $this;
     }
 
@@ -232,6 +240,7 @@ class Item implements ToArrayInterface
     public function setUnitPrice($unitPrice)
     {
         $this->unitPrice = $unitPrice;
+
         return $this;
     }
 
@@ -251,6 +260,7 @@ class Item implements ToArrayInterface
     public function setTaxRate($taxRate)
     {
         $this->taxRate = $taxRate;
+
         return $this;
     }
 
@@ -270,21 +280,22 @@ class Item implements ToArrayInterface
     public function setImageUrl($imageUrl)
     {
         $this->imageUrl = $imageUrl;
+
         return $this;
     }
 
     public function toArray()
     {
         $data = [
-            'type' => $this->type,
-            'artno' => $this->artno,
-            'name' => $this->name,
-            'quantity' => $this->quantity,
-            'unit_price' => $this->unitPrice,
-            'tax_rate' => $this->taxRate,
+            'type'                      => $this->type,
+            'artno'                     => $this->artno,
+            'name'                      => $this->name,
+            'quantity'                  => $this->quantity,
+            'unit_price'                => $this->unitPrice,
+            'tax_rate'                  => $this->taxRate,
             'total_price_excluding_tax' => $this->totalPriceExcludingTax,
             'total_price_including_tax' => $this->totalPriceIncludingTax,
-            'total_tax_amount' => $this->totalTaxAmount,
+            'total_tax_amount'          => $this->totalTaxAmount,
         ];
 
         if ($this->type == 'physical') {
@@ -293,9 +304,9 @@ class Item implements ToArrayInterface
         }
 
         $optionalParameters = [
-            'sku' => 'sku',
+            'sku'         => 'sku',
             'description' => 'description',
-            'image_url' => 'imageUrl'
+            'image_url'   => 'imageUrl',
         ];
 
         foreach ($optionalParameters as $key => $value) {

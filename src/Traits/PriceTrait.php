@@ -5,17 +5,17 @@ namespace Stidner\Traits;
 trait PriceTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $totalPriceExcludingTax;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $totalTaxAmount;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $totalPriceIncludingTax;
 
@@ -35,6 +35,7 @@ trait PriceTrait
     public function setTotalPriceExcludingTax($totalPriceExcludingTax)
     {
         $this->totalPriceExcludingTax = $totalPriceExcludingTax;
+
         return $this;
     }
 
@@ -54,6 +55,7 @@ trait PriceTrait
     public function setTotalTaxAmount($totalTaxAmount)
     {
         $this->totalTaxAmount = $totalTaxAmount;
+
         return $this;
     }
 
@@ -73,6 +75,7 @@ trait PriceTrait
     public function setTotalPriceIncludingTax($totalPriceIncludingTax)
     {
         $this->totalPriceIncludingTax = $totalPriceIncludingTax;
+
         return $this;
     }
 }
