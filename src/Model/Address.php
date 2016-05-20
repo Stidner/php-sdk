@@ -82,6 +82,7 @@ class Address implements ToArrayInterface
     public function setBusinessName($businessName)
     {
         $this->businessName = $businessName;
+
         return $this;
     }
 
@@ -101,6 +102,7 @@ class Address implements ToArrayInterface
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
+
         return $this;
     }
 
@@ -120,6 +122,7 @@ class Address implements ToArrayInterface
     public function setFamilyName($familyName)
     {
         $this->familyName = $familyName;
+
         return $this;
     }
 
@@ -139,6 +142,7 @@ class Address implements ToArrayInterface
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -158,6 +162,7 @@ class Address implements ToArrayInterface
     public function setStreetAddress($streetAddress)
     {
         $this->streetAddress = $streetAddress;
+
         return $this;
     }
 
@@ -177,6 +182,7 @@ class Address implements ToArrayInterface
     public function setStreetAddress2($streetAddress2)
     {
         $this->streetAddress2 = $streetAddress2;
+
         return $this;
     }
 
@@ -196,6 +202,7 @@ class Address implements ToArrayInterface
     public function setPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
+
         return $this;
     }
 
@@ -223,6 +230,7 @@ class Address implements ToArrayInterface
     public function setCity($city)
     {
         $this->city = $city;
+
         return $this;
     }
 
@@ -242,6 +250,7 @@ class Address implements ToArrayInterface
     public function setPhone($phone)
     {
         $this->phone = $phone;
+
         return $this;
     }
 
@@ -253,6 +262,7 @@ class Address implements ToArrayInterface
     public function setRegion($region)
     {
         $this->region = $region;
+
         return $this;
     }
 
@@ -272,6 +282,7 @@ class Address implements ToArrayInterface
     public function setCountry($country)
     {
         $this->country = $country;
+
         return $this;
     }
 
@@ -291,6 +302,7 @@ class Address implements ToArrayInterface
     public function setEmail($email)
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -299,18 +311,18 @@ class Address implements ToArrayInterface
         $data = [];
 
         $optionalParameters = [
-            'business_name' => 'businessName',
-            'first_name' => 'firstName',
-            'family_name' => 'familyName',
-            'title' => 'title',
-            'street_address' => 'streetAddress',
+            'business_name'   => 'businessName',
+            'first_name'      => 'firstName',
+            'family_name'     => 'familyName',
+            'title'           => 'title',
+            'street_address'  => 'streetAddress',
             'street_address2' => 'streetAddress',
-            'postal_code' => 'postalCode',
-            'city' => 'city',
-            'region' => 'region',
-            'phone' => 'phone',
-            'country' => 'country',
-            'email' => 'email',
+            'postal_code'     => 'postalCode',
+            'city'            => 'city',
+            'region'          => 'region',
+            'phone'           => 'phone',
+            'country'         => 'country',
+            'email'           => 'email',
         ];
 
         foreach ($optionalParameters as $key => $value) {

@@ -119,6 +119,7 @@ class Order implements ToArrayInterface
     public function setPurchaseCountry($purchaseCountry)
     {
         $this->purchaseCountry = $purchaseCountry;
+
         return $this;
     }
 
@@ -138,6 +139,7 @@ class Order implements ToArrayInterface
     public function setPurchaseCurrency($purchaseCurrency)
     {
         $this->purchaseCurrency = $purchaseCurrency;
+
         return $this;
     }
 
@@ -157,6 +159,7 @@ class Order implements ToArrayInterface
     public function setLocale($locale)
     {
         $this->locale = $locale;
+
         return $this;
     }
 
@@ -176,6 +179,7 @@ class Order implements ToArrayInterface
     public function setStatus($status)
     {
         $this->status = $status;
+
         return $this;
     }
 
@@ -195,6 +199,7 @@ class Order implements ToArrayInterface
     public function setBillingAddress($billingAddress)
     {
         $this->billingAddress = $billingAddress;
+
         return $this;
     }
 
@@ -214,6 +219,7 @@ class Order implements ToArrayInterface
     public function setShippingAddress($shippingAddress)
     {
         $this->shippingAddress = $shippingAddress;
+
         return $this;
     }
 
@@ -233,6 +239,7 @@ class Order implements ToArrayInterface
     public function setComment($comment)
     {
         $this->comment = $comment;
+
         return $this;
     }
 
@@ -252,6 +259,7 @@ class Order implements ToArrayInterface
     public function setCustomer($customer)
     {
         $this->customer = $customer;
+
         return $this;
     }
 
@@ -271,6 +279,7 @@ class Order implements ToArrayInterface
     public function setMerchantUrl($merchantUrl)
     {
         $this->merchantUrl = $merchantUrl;
+
         return $this;
     }
 
@@ -290,6 +299,7 @@ class Order implements ToArrayInterface
     public function setMerchantReference1($merchantReference1)
     {
         $this->merchantReference1 = $merchantReference1;
+
         return $this;
     }
 
@@ -309,6 +319,7 @@ class Order implements ToArrayInterface
     public function setMerchantReference2($merchantReference2)
     {
         $this->merchantReference2 = $merchantReference2;
+
         return $this;
     }
 
@@ -328,6 +339,7 @@ class Order implements ToArrayInterface
     public function setCreatedDate($createdDate)
     {
         $this->createdDate = $createdDate;
+
         return $this;
     }
 
@@ -347,6 +359,7 @@ class Order implements ToArrayInterface
     public function setCompletedDate($completedDate)
     {
         $this->completedDate = $completedDate;
+
         return $this;
     }
 
@@ -366,6 +379,7 @@ class Order implements ToArrayInterface
     public function setUpdatedDate($updatedDate)
     {
         $this->updatedDate = $updatedDate;
+
         return $this;
     }
 
@@ -385,6 +399,7 @@ class Order implements ToArrayInterface
     public function setShippingCountries($shippingCountries)
     {
         $this->shippingCountries = $shippingCountries;
+
         return $this;
     }
 
@@ -404,6 +419,7 @@ class Order implements ToArrayInterface
     public function setOptions($options)
     {
         $this->options = $options;
+
         return $this;
     }
 
@@ -423,6 +439,7 @@ class Order implements ToArrayInterface
     public function setItems($items)
     {
         $this->items = $items;
+
         return $this;
     }
 
@@ -436,16 +453,16 @@ class Order implements ToArrayInterface
     public function toArray()
     {
         $data = [
-            'purchase_country' => $this->purchaseCountry,
-            'purchase_currency' => $this->purchaseCurrency,
-            'locale' => $this->locale,
+            'purchase_country'          => $this->purchaseCountry,
+            'purchase_currency'         => $this->purchaseCurrency,
+            'locale'                    => $this->locale,
             'total_price_excluding_tax' => $this->totalPriceExcludingTax,
             'total_price_including_tax' => $this->totalPriceIncludingTax,
-            'total_tax_amount' => $this->totalTaxAmount,
-            'merchant_urls' => $this->merchantUrl->toArray(),
-            'items' => [],
-            'options' => $this->options->toArray(),
-            'shipping_countries' => $this->shippingCountries,
+            'total_tax_amount'          => $this->totalTaxAmount,
+            'merchant_urls'             => $this->merchantUrl->toArray(),
+            'items'                     => [],
+            'options'                   => $this->options->toArray(),
+            'shipping_countries'        => $this->shippingCountries,
         ];
 
         foreach ($this->items as $item) {

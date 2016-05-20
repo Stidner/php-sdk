@@ -37,6 +37,7 @@ class Customer implements ToArrayInterface
     public function setEmail($email)
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -56,6 +57,7 @@ class Customer implements ToArrayInterface
     public function setPhone($phone)
     {
         $this->phone = $phone;
+
         return $this;
     }
 
@@ -75,6 +77,7 @@ class Customer implements ToArrayInterface
     public function setOrgno($orgno)
     {
         $this->orgno = $orgno;
+
         return $this;
     }
 

@@ -33,13 +33,14 @@ class Merchant implements ToArrayInterface
 
     /**
      * Merchant constructor.
+     *
      * @param string $terms
      * @param string $checkout
      * @param string $confirmation
      * @param string $push
      * @param string $discount
      */
-    public function __construct($terms, $checkout, $confirmation, $push = NULL, $discount = NULL)
+    public function __construct($terms, $checkout, $confirmation, $push = null, $discount = null)
     {
         $this->terms = $terms;
         $this->checkout = $checkout;
@@ -64,6 +65,7 @@ class Merchant implements ToArrayInterface
     public function setTerms($terms)
     {
         $this->terms = $terms;
+
         return $this;
     }
 
@@ -83,6 +85,7 @@ class Merchant implements ToArrayInterface
     public function setCheckout($checkout)
     {
         $this->checkout = $checkout;
+
         return $this;
     }
 
@@ -102,6 +105,7 @@ class Merchant implements ToArrayInterface
     public function setConfirmation($confirmation)
     {
         $this->confirmation = $confirmation;
+
         return $this;
     }
 
@@ -121,6 +125,7 @@ class Merchant implements ToArrayInterface
     public function setPush($push)
     {
         $this->push = $push;
+
         return $this;
     }
 
@@ -140,19 +145,20 @@ class Merchant implements ToArrayInterface
     public function setDiscount($discount)
     {
         $this->discount = $discount;
+
         return $this;
     }
 
     public function toArray()
     {
         $data = [
-            'terms' => $this->terms,
-            'checkout' => $this->checkout,
+            'terms'        => $this->terms,
+            'checkout'     => $this->checkout,
             'confirmation' => $this->confirmation,
         ];
 
         $optionalParameters = [
-            'push' => 'push',
+            'push'     => 'push',
             'discount' => 'discount',
         ];
 
