@@ -1,0 +1,13 @@
+{
+  "name": "stinder/php-sdk",
+  "authors": [
+    {
+      "name": "Bartłomiej Kiełbasa",
+      "email": "bartlomiej.kielbasa@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {"Stinder\\": "src/"}
+  }
+}
