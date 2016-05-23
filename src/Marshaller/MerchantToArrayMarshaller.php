@@ -9,7 +9,7 @@ class MerchantToArrayMarshaller implements ToArrayInterface
 {
     public function toArray($object)
     {
-        /**
+        /*
          * @var Merchant $object
          */
         $data = [

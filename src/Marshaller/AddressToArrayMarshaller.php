@@ -9,7 +9,7 @@ class AddressToArrayMarshaller implements ToArrayInterface
 {
     public function toArray($object)
     {
-        /**
+        /*
          * @var Address $object
          */
         $data = [];

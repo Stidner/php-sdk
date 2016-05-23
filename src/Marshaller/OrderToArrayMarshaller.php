@@ -3,15 +3,15 @@
 namespace Stidner\Marshaller;
 
 use Stidner\Interfaces\ToArrayInterface;
-use Stidner\Model\Order;
 use Stidner\Marshaller\Order\ItemToArrayMarshaller;
 use Stidner\Marshaller\Order\OptionsToArrayMarshaller;
+use Stidner\Model\Order;
 
 class OrderToArrayMarshaller implements ToArrayInterface
 {
     public function toArray($object)
     {
-        /**
+        /*
          * @var Order $object
          */
 
