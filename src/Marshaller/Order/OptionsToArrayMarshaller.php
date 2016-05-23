@@ -9,7 +9,7 @@ class OptionsToArrayMarshaller implements ToArrayInterface
 {
     public function toArray($object)
     {
-        /**
+        /*
          * @var Options $object
          */
         $data = [];

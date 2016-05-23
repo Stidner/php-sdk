@@ -123,7 +123,7 @@ class Order
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
-        
+
         return $this;
     }
 

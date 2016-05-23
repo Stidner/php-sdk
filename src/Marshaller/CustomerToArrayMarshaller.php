@@ -9,7 +9,7 @@ class CustomerToArrayMarshaller implements ToArrayInterface
 {
     public function toArray($object)
     {
-        /**
+        /*
          * @var Customer $object
          */
         $data = [];

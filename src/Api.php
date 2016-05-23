@@ -4,8 +4,8 @@ namespace Stidner;
 
 use Httpful\Request;
 use Stidner\Api\ResponseException;
-use Stidner\Model\Order;
 use Stidner\Marshaller\OrderToArrayMarshaller;
+use Stidner\Model\Order;
 
 class Api
 {
@@ -37,9 +37,11 @@ class Api
 
     /**
      * @param Order $order
-     * @return Order
-     * @throws ApiException throws when username or password is invalid
+     *
+     * @throws ApiException      throws when username or password is invalid
      * @throws ResponseException
+     *
+     * @return Order
      */
     public function createOrder(Order $order)
     {
@@ -53,7 +55,7 @@ class Api
         }
 
         if ($response->body->status > 400) {
-            throw new ResponseException($response->body->message, $response->body->status, NULL, $response->body->details);
+            throw new ResponseException($response->body->message, $response->body->status, null, $response->body->details);
         }
 
         $order->setOrderId($response->body->data->order_id);

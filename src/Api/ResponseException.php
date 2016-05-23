@@ -3,7 +3,7 @@
 namespace Stidner\Api;
 
 /**
- * Class ResponseException
+ * Class ResponseException.
  */
 class ResponseException extends \Exception
 {
@@ -11,11 +11,11 @@ class ResponseException extends \Exception
      * @var string[]
      */
     private $messages = [];
-    
-    public function __construct($message = "", $code = 0, \Exception $previous = null, $messages = [])
+
+    public function __construct($message = '', $code = 0, \Exception $previous = null, $messages = [])
     {
         parent::__construct($message, $code, $previous);
-        
+
         $this->messages = $messages;
     }
 
@@ -35,7 +35,7 @@ class ResponseException extends \Exception
     public function setMessages($messages)
     {
         $this->messages = $messages;
-        
+
         return $this;
     }
 }

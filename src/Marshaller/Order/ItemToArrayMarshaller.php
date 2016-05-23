@@ -9,7 +9,7 @@ class ItemToArrayMarshaller implements ToArrayInterface
 {
     public function toArray($object)
     {
-        /**
+        /*
          * @var Item $object
          */
         $data = [
