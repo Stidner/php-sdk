@@ -2,9 +2,7 @@
 
 namespace Stidner\Model;
 
-use Stidner\Interfaces\ToArrayInterface;
-
-class Merchant implements ToArrayInterface
+class Merchant
 {
     /**
      * @var string
@@ -147,27 +145,5 @@ class Merchant implements ToArrayInterface
         $this->discount = $discount;
 
         return $this;
-    }
-
-    public function toArray()
-    {
-        $data = [
-            'terms'        => $this->terms,
-            'checkout'     => $this->checkout,
-            'confirmation' => $this->confirmation,
-        ];
-
-        $optionalParameters = [
-            'push'     => 'push',
-            'discount' => 'discount',
-        ];
-
-        foreach ($optionalParameters as $key => $value) {
-            if (!isset($this->$value)) {
-                $data[$key] = $this->$value;
-            }
-        }
-
-        return $data;
     }
 }

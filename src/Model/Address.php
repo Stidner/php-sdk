@@ -2,9 +2,7 @@
 
 namespace Stidner\Model;
 
-use Stidner\Interfaces\ToArrayInterface;
-
-class Address implements ToArrayInterface
+class Address
 {
     /**
      * @var string
@@ -304,33 +302,5 @@ class Address implements ToArrayInterface
         $this->email = $email;
 
         return $this;
-    }
-
-    public function toArray()
-    {
-        $data = [];
-
-        $optionalParameters = [
-            'business_name'   => 'businessName',
-            'first_name'      => 'firstName',
-            'family_name'     => 'familyName',
-            'title'           => 'title',
-            'street_address'  => 'streetAddress',
-            'street_address2' => 'streetAddress',
-            'postal_code'     => 'postalCode',
-            'city'            => 'city',
-            'region'          => 'region',
-            'phone'           => 'phone',
-            'country'         => 'country',
-            'email'           => 'email',
-        ];
-
-        foreach ($optionalParameters as $key => $value) {
-            if (!isset($this->$value)) {
-                $data[$key] = $this->$value;
-            }
-        }
-
-        return $data;
     }
 }

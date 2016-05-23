@@ -2,10 +2,9 @@
 
 namespace Stidner\Model\Order;
 
-use Stidner\Interfaces\ToArrayInterface;
 use Stidner\Traits\PriceTrait;
 
-class Item implements ToArrayInterface
+class Item
 {
     use PriceTrait;
 
@@ -282,39 +281,5 @@ class Item implements ToArrayInterface
         $this->imageUrl = $imageUrl;
 
         return $this;
-    }
-
-    public function toArray()
-    {
-        $data = [
-            'type'                      => $this->type,
-            'artno'                     => $this->artno,
-            'name'                      => $this->name,
-            'quantity'                  => $this->quantity,
-            'unit_price'                => $this->unitPrice,
-            'tax_rate'                  => $this->taxRate,
-            'total_price_excluding_tax' => $this->totalPriceExcludingTax,
-            'total_price_including_tax' => $this->totalPriceIncludingTax,
-            'total_tax_amount'          => $this->totalTaxAmount,
-        ];
-
-        if ($this->type == 'physical') {
-            $data['weight'] = $this->weight;
-            $data['quantity_unit'] = $this->quantityUnit;
-        }
-
-        $optionalParameters = [
-            'sku'         => 'sku',
-            'description' => 'description',
-            'image_url'   => 'imageUrl',
-        ];
-
-        foreach ($optionalParameters as $key => $value) {
-            if (!isset($this->$value)) {
-                $data[$key] = $this->$value;
-            }
-        }
-
-        return $data;
     }
 }

@@ -1,10 +1,8 @@
 <?php
 
-namespace Stinder\Model;
+namespace Stidner\Model;
 
-use Stidner\Interfaces\ToArrayInterface;
-
-class Customer implements ToArrayInterface
+class Customer
 {
     /**
      * @var string
@@ -79,24 +77,5 @@ class Customer implements ToArrayInterface
         $this->orgno = $orgno;
 
         return $this;
-    }
-
-    public function toArray()
-    {
-        $data = [];
-
-        $optionalParameters = [
-            'email' => 'email',
-            'phone' => 'phone',
-            'orgno' => 'orgno',
-        ];
-
-        foreach ($optionalParameters as $key => $value) {
-            if (!isset($this->$value)) {
-                $data[$key] = $this->$value;
-            }
-        }
-
-        return $data;
     }
 }

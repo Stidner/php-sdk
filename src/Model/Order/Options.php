@@ -2,9 +2,7 @@
 
 namespace Stidner\Model\Order;
 
-use Stidner\Interfaces\ToArrayInterface;
-
-class Options implements ToArrayInterface
+class Options
 {
     /**
      * @var string
@@ -179,28 +177,5 @@ class Options implements ToArrayInterface
         $this->colorBackground = $colorBackground;
 
         return $this;
-    }
-
-    public function toArray()
-    {
-        $data = [];
-
-        $optionalParameters = [
-            'color_button'              => 'colorButton',
-            'color_button_text'         => 'colorButtonText',
-            'color_checkbox'            => 'colorCheckbox',
-            'color_checkbox_checkmarks' => 'colorCheckboxCheckmarks',
-            'color_header'              => 'colorHeader',
-            'color_link'                => 'colorLink',
-            'color_background'          => 'colorBackground',
-        ];
-
-        foreach ($optionalParameters as $key => $value) {
-            if (!isset($this->$value)) {
-                $data[$key] = $this->$value;
-            }
-        }
-
-        return $data;
     }
 }

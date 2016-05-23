@@ -2,13 +2,17 @@
 
 namespace Stidner\Model;
 
-use Stidner\Interfaces\ToArrayInterface;
 use Stidner\Model\Order\Options;
 use Stidner\Traits\PriceTrait;
 
-class Order implements ToArrayInterface
+class Order
 {
     use PriceTrait;
+
+    /**
+     * @var string
+     */
+    protected $orderId;
 
     /**
      * @var string
@@ -101,6 +105,26 @@ class Order implements ToArrayInterface
     public function __construct()
     {
         $this->options = new Options();
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrderId()
+    {
+        return $this->orderId;
+    }
+
+    /**
+     * @param string $orderId
+     *
+     * @return $this
+     */
+    public function setOrderId($orderId)
+    {
+        $this->orderId = $orderId;
+        
+        return $this;
     }
 
     /**
@@ -448,50 +472,5 @@ class Order implements ToArrayInterface
         $this->items[] = $item;
 
         return $this;
-    }
-
-    public function toArray()
-    {
-        $data = [
-            'purchase_country'          => $this->purchaseCountry,
-            'purchase_currency'         => $this->purchaseCurrency,
-            'locale'                    => $this->locale,
-            'total_price_excluding_tax' => $this->totalPriceExcludingTax,
-            'total_price_including_tax' => $this->totalPriceIncludingTax,
-            'total_tax_amount'          => $this->totalTaxAmount,
-            'merchant_urls'             => $this->merchantUrl->toArray(),
-            'items'                     => [],
-            'options'                   => $this->options->toArray(),
-            'shipping_countries'        => $this->shippingCountries,
-        ];
-
-        foreach ($this->items as $item) {
-            $data['items'][] = $item->toArray();
-        }
-
-        if ($this->billingAddress) {
-            $data['billing_address'] = $this->billingAddress->toArray();
-        }
-
-        if ($this->shippingAddress) {
-            $data['shipping_address'] = $this->shippingAddress->toArray();
-        }
-
-        if ($this->customer) {
-            $data['customer'] = $this->customer->toArray(); // TODO!!
-        }
-
-        $optionalParameters = [
-            'merchant_reference1' => 'merchantReference1',
-            'merchant_reference2' => 'merchantReference2',
-        ];
-
-        foreach ($optionalParameters as $key => $value) {
-            if (!isset($this->$value)) {
-                $data[$key] = $this->$value;
-            }
-        }
-
-        return $data;
     }
 }

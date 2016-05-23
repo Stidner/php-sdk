@@ -13,5 +13,8 @@
   },
   "autoload": {
     "psr-4": {"Stidner\\": "src/"}
+  },
+  "require-dev": {
+    "phpdocumentor/phpdocumentor": "^2.9"
   }
 }

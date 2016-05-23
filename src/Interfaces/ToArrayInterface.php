@@ -4,5 +4,5 @@ namespace Stidner\Interfaces;
 
 interface ToArrayInterface
 {
-    public function toArray();
+    public function toArray($object);
 }
