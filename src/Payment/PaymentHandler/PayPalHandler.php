@@ -24,6 +24,7 @@ class PayPalHandler extends AbstractPaymentHandler
     public function handleCheckout()
     {
         $url = sprintf($this->completeUrl.'/order/'.$this->orderId.'/?token=%s&PayerID=%s', $this->token, $this->payerId);
-        header('Location: '.$url);exit;
+        header('Location: '.$url);
+        exit;
     }
 }
