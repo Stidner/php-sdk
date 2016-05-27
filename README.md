@@ -53,6 +53,14 @@ $order->setPurchaseCountry('PL')
     ->addItem($boots);
 ```
 
+The three arguments in Merchant model are:
+
+* **terms** - URL to the merchant’s terms and conditions page.
+* **checkout** - URL to the merchant’s checkout page.
+* **confirmation** - URL to the merchant’s confirmation page.
+
+They are all required.
+
 ### Adding address information about customer
 
 To add billing address or shipping address you need to create new instance of Stidner\Model\Address class.
@@ -91,6 +99,32 @@ Possible error codes are:
 
  - **200** - everything went OK, no errors
  - **412** - validation failed on some variable. More details are available in `$e->getMessages()`
+
+# Handling the checkout process
+
+When the order is created you should open an iframe with address provided by method `Stidner\Api::getCompleteUrl`. Example usage of the method is available below:
+
+```php
+$iframeUrl = $api->getCompleteUrl($order->getOrderId());
+```
+
+Then you load the iframe in you template.
+
+```html
+<iframe src="<?=$iframeUlr?>"></iframe>
+```
+
+The customer will see a site where he will be able to finish his payment. When the payment finishes, the iframe will be redirected to the confirmation page you provided when you created the order.
+It was the 3th argument in Merchant object.
+
+If the customer choose PayPal as payment method there will be one additional step. After the iframe redirects the users browser to the PayPal site and customer complete the purchase, the customer will be redirected to checkout url in your merchant.
+In an action which handles this request in your store, you need to call `Stidner\Api::handleCheckout` method to redirect the customer's iframe to the finial step of the purchase.
+
+```php
+$api->handleCheckout($orderId);
+```
+
+This will finish execution of the code so make sure it is the last code in your action.
 
 # Generating the SDK API documentation
 
