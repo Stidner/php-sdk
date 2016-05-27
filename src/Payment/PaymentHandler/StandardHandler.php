@@ -6,6 +6,7 @@ class StandardHandler extends AbstractPaymentHandler
 {
     public function handleCheckout()
     {
-        header('Location: '.$this->completeUrl.'/order/'.$this->orderId);exit;
+        header('Location: '.$this->completeUrl.'/order/'.$this->orderId);
+        exit;
     }
 }

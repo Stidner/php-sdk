@@ -2,8 +2,6 @@
 
 namespace Stidner\Payment\PaymentHandler;
 
-use Stidner\Model\Order;
-
 abstract class AbstractPaymentHandler implements PaymentHandlerInterface
 {
     /**

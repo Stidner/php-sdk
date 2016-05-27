@@ -11,10 +11,9 @@ use Stidner\Payment\PaymentHandler\PayPalHandler;
 use Stidner\Payment\PaymentHandler\StandardHandler;
 
 /**
- * Class to make using Stidner API easier
+ * Class to make using Stidner API easier.
  *
  * @author Bartłomiej Kiełbasa <bartlomiej.kielbasa@gmail.com>
- * @package Stidner
  */
 class Api
 {
@@ -44,6 +43,7 @@ class Api
 
     /**
      * Api constructor.
+     *
      * @param $username
      * @param $password
      * @param string $protocol Possible values: http, https
@@ -92,6 +92,7 @@ class Api
 
     /**
      * Method handles the payment checkout action.
+     *
      * @param $orderId
      */
     public function handleCheckout($orderId)
@@ -112,6 +113,7 @@ class Api
      * Returns full URL to complete site of the payment. It should be loaded in an iframe.
      *
      * @param $orderId
+     *
      * @return string
      */
     public function getCompleteUrl($orderId)
