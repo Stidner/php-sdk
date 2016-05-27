@@ -4,8 +4,8 @@ namespace Stidner;
 
 use Httpful\Request;
 use Stidner\Api\ResponseException;
-use Stidner\Marshaller\ToArray\OrderMarshaller as ToArrayOrderMarshaller;
 use Stidner\Marshaller\FromObject\OrderMarshaller as FromObjectOrderMarshaller;
+use Stidner\Marshaller\ToArray\OrderMarshaller as ToArrayOrderMarshaller;
 use Stidner\Model\Order;
 
 class Api
@@ -53,7 +53,7 @@ class Api
     public function createOrder(Order $order)
     {
         $orderData = $this->orderMarshaller->toArray($order);
-        $response = NULL;
+        $response = null;
 
         try {
             $response = Request::post($this->getUrl().'/v1/order', $orderData)

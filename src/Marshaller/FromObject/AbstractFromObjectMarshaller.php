@@ -13,7 +13,6 @@ abstract class AbstractFromObjectMarshaller implements FromObjectMarshaller
 
     protected function copyProperties($destinationClass, $object)
     {
-
         foreach (get_object_vars($object) as $name => $value) {
             $methodName = 'set'.$this->camelize($name);
 

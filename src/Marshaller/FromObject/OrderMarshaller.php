@@ -2,9 +2,9 @@
 
 namespace Stidner\Marshaller\FromObject;
 
-use Stidner\Model\Order;
 use Stidner\Marshaller\FromObject\Order\ItemMarshaller;
 use Stidner\Marshaller\FromObject\Order\OptionsMarshaller;
+use Stidner\Model\Order;
 
 class OrderMarshaller extends AbstractFromObjectMarshaller
 {
