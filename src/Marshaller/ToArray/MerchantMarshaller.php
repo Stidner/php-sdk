@@ -1,11 +1,11 @@
 <?php
 
-namespace Stidner\Marshaller;
+namespace Stidner\Marshaller\ToArray;
 
 use Stidner\Interfaces\ToArrayInterface;
 use Stidner\Model\Merchant;
 
-class MerchantToArrayMarshaller implements ToArrayInterface
+class MerchantMarshaller implements ToArrayInterface
 {
     public function toArray($object)
     {

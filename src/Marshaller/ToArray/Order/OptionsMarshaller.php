@@ -1,11 +1,11 @@
 <?php
 
-namespace Stidner\Marshaller\Order;
+namespace Stidner\Marshaller\ToArray\Order;
 
 use Stidner\Interfaces\ToArrayInterface;
 use Stidner\Model\Order\Options;
 
-class OptionsToArrayMarshaller implements ToArrayInterface
+class OptionsMarshaller implements ToArrayInterface
 {
     public function toArray($object)
     {

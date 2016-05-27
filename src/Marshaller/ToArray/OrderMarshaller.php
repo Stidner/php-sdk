@@ -1,13 +1,13 @@
 <?php
 
-namespace Stidner\Marshaller;
+namespace Stidner\Marshaller\ToArray;
 
 use Stidner\Interfaces\ToArrayInterface;
-use Stidner\Marshaller\Order\ItemToArrayMarshaller;
-use Stidner\Marshaller\Order\OptionsToArrayMarshaller;
+use Stidner\Marshaller\ToArray\Order\ItemMarshaller;
+use Stidner\Marshaller\ToArray\Order\OptionsMarshaller;
 use Stidner\Model\Order;
 
-class OrderToArrayMarshaller implements ToArrayInterface
+class OrderMarshaller implements ToArrayInterface
 {
     public function toArray($object)
     {
@@ -15,11 +15,11 @@ class OrderToArrayMarshaller implements ToArrayInterface
          * @var Order $object
          */
 
-        $merchantMarshaller = new MerchantToArrayMarshaller();
-        $optionsMarshaller = new OptionsToArrayMarshaller();
-        $itemMarshaller = new ItemToArrayMarshaller();
-        $addressMarshaller = new AddressToArrayMarshaller();
-        $customerMarshaller = new CustomerToArrayMarshaller();
+        $merchantMarshaller = new MerchantMarshaller();
+        $optionsMarshaller = new OptionsMarshaller();
+        $itemMarshaller = new ItemMarshaller();
+        $addressMarshaller = new AddressMarshaller();
+        $customerMarshaller = new CustomerMarshaller();
 
         $data = [
             'purchase_country'          => $object->getPurchaseCountry(),

@@ -4,7 +4,7 @@ namespace Stidner;
 
 use Httpful\Request;
 use Stidner\Api\ResponseException;
-use Stidner\Marshaller\OrderToArrayMarshaller;
+use Stidner\Marshaller\ToArray\OrderMarshaller;
 use Stidner\Model\Order;
 
 class Api
@@ -23,7 +23,7 @@ class Api
     private $password;
 
     /**
-     * @var OrderToArrayMarshaller
+     * @var OrderMarshaller
      */
     private $orderMarshaller;
 
@@ -32,7 +32,7 @@ class Api
         $this->username = $username;
         $this->password = $password;
         $this->protocol = $protocol;
-        $this->orderMarshaller = new OrderToArrayMarshaller();
+        $this->orderMarshaller = new OrderMarshaller();
     }
 
     /**
