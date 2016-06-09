@@ -3,7 +3,7 @@
 namespace Stidner\Marshaller\ToArray;
 
 use Stidner\Interfaces\ToArrayInterface;
-use Stidner\Model\Customer;
+
 
 class CustomerMarshaller implements ToArrayInterface
 {

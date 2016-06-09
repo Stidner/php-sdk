@@ -17,6 +17,11 @@ class Order
     /**
      * @var string
      */
+    protected $iframeUrl;
+
+    /**
+     * @var string
+     */
     protected $purchaseCountry;
 
     /**
@@ -127,6 +132,25 @@ class Order
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getIframeUrl()
+    {
+        return $this->iframeUrl;
+    }
+
+    /**
+     * @param string $iframeUrl
+     *
+     * @return $this
+     */
+    public function setIframeUrl($iframeUrl)
+    {
+        $this->iframeUrl = $iframeUrl;
+
+        return $this;
+    }
     /**
      * @return string
      */
@@ -290,7 +314,7 @@ class Order
     /**
      * @return Merchant
      */
-    public function getMerchantUrl()
+    public function getMerchantUrls()
     {
         return $this->merchantUrl;
     }
@@ -300,7 +324,7 @@ class Order
      *
      * @return $this
      */
-    public function setMerchantUrl($merchantUrl)
+    public function setMerchantUrls($merchantUrl)
     {
         $this->merchantUrl = $merchantUrl;
 

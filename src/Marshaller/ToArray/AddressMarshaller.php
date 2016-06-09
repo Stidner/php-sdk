@@ -3,7 +3,7 @@
 namespace Stidner\Marshaller\ToArray;
 
 use Stidner\Interfaces\ToArrayInterface;
-use Stidner\Model\Address;
+
 
 class AddressMarshaller implements ToArrayInterface
 {
@@ -12,21 +12,29 @@ class AddressMarshaller implements ToArrayInterface
         /*
          * @var Address $object
          */
-        $data = [];
+        $data = [
+            'type'            => $object->getType(),
+            'addressLine'     => $object->getAddressLine(),
+            'postalCode'      => $object->getPostalCode(),
+            'city'            => $object->getCity(),
+            'region'          => $object->getRegion(),
+            'phone'           => $object->getPhone(),
+            'email'           => $object->getEmail(),
+            'countryCode'     => $object->getCountryCode(),
+        ];
+
+        if ($object->getType() == 'business') {
+            $data['business_name'] = $object->getBusinessName();
+        }
+        else
+        {
+            $data['first_name'] = $object->getFirstName();
+            $data['family_name'] = $object->getFamilyName();
+        }
 
         $optionalParameters = [
-            'business_name'   => 'getBusinessName',
-            'first_name'      => 'getFirstName',
-            'family_name'     => 'getFamilyName',
             'title'           => 'getTitle',
-            'street_address'  => 'getStreetAddress',
-            'street_address2' => 'getStreetAddress',
-            'postal_code'     => 'getPostalCode',
-            'city'            => 'getCity',
-            'region'          => 'getRegion',
-            'phone'           => 'getPhone',
-            'country'         => 'getCountry',
-            'email'           => 'getEmail',
+            'addressLine2'    => 'getAddressLine2',
         ];
 
         foreach ($optionalParameters as $key => $value) {

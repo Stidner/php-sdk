@@ -3,7 +3,7 @@
 namespace Stidner\Marshaller\ToArray\Order;
 
 use Stidner\Interfaces\ToArrayInterface;
-use Stidner\Model\Order\Item;
+
 
 class ItemMarshaller implements ToArrayInterface
 {
@@ -17,6 +17,7 @@ class ItemMarshaller implements ToArrayInterface
             'artno'                     => $object->getArtno(),
             'name'                      => $object->getName(),
             'quantity'                  => $object->getQuantity(),
+            'quantity_unit'             => $object->getQuantityUnit(),
             'unit_price'                => $object->getUnitPrice(),
             'tax_rate'                  => $object->getTaxRate(),
             'total_price_excluding_tax' => $object->getTotalPriceExcludingTax(),
@@ -26,7 +27,6 @@ class ItemMarshaller implements ToArrayInterface
 
         if ($object->getType() == 'physical') {
             $data['weight'] = $object->getWeight();
-            $data['quantity_unit'] = $object->getQuantityUnit();
         }
 
         $optionalParameters = [

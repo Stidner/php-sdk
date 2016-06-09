@@ -17,8 +17,8 @@ use Stidner\Payment\PaymentHandler\StandardHandler;
  */
 class Api
 {
-    private $apiHost = 'api.stidner.com';
-    private $apiCompleteHost = 'complete.stidner.com';
+    private $apiHost = 'test.api.stidner.com';
+    private $apiCompleteHost = 'test.complete.stidner.com';
     private $protocol;
 
     /**
@@ -71,11 +71,15 @@ class Api
         $response = null;
 
         try {
-            $response = Request::post($this->getUrl().'/v1/order', $orderData)
+            $response = Request::post($this->getUrl() . '/v1/order', $orderData)
                 ->sendsJson()->send();
 
             if ($response->code == 400) {
                 throw new ApiException('Authentication failed', 400);
+            }
+
+            if ($response->code == 412) {
+                throw new ResponseException(json_encode($response->body->details), $response->body->status);
             }
 
             if ($response->body->status > 400) {
@@ -88,6 +92,11 @@ class Api
         $order = $this->objectOrderMarshaller->createFromObject($response->body->data);
 
         return $order;
+    }
+
+    protected function getUrl()
+    {
+        return $this->protocol . '://' . $this->username . ':' . $this->password . '@' . $this->apiHost;
     }
 
     /**
@@ -118,11 +127,12 @@ class Api
      */
     public function getCompleteUrl($orderId)
     {
-        return $this->protocol.'://'.$this->apiCompleteHost.'/order/'.$orderId;
-    }
-
-    protected function getUrl()
-    {
-        return $this->protocol.'://'.$this->username.':'.$this->password.'@'.$this->apiHost;
+        if(strlen($orderId) < 3)
+        {
+            error_log("Invalid orderId passed to Stidner\\API::getCompleteUrl();");
+            print "Invalid orderId passed to Stidner\\API::getCompleteUrl();";
+            return null;
+        }
+        return $this->protocol . '://' . $this->apiCompleteHost . '/order/' . $orderId;
     }
 }

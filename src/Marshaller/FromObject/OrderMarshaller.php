@@ -70,7 +70,7 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
 
             if (in_array($name, ['merchant_urls'])) {
                 $value = $this->merchantMarshaller->createFromObject($value);
-                $destinationClass->setMerchantUrl($value);
+                $destinationClass->setMerchantUrls($value);
                 continue;
             }
 

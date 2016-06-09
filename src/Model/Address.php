@@ -27,12 +27,12 @@ class Address
     /**
      * @var string
      */
-    protected $streetAddress;
+    protected $addressLine;
 
     /**
      * @var string
      */
-    protected $streetAddress2;
+    protected $addressLine2;
 
     /**
      * @var string
@@ -63,6 +63,12 @@ class Address
      * @var string
      */
     protected $email;
+
+    /**
+     * @var string
+     */
+    protected $type;
+
 
     /**
      * @return string
@@ -147,19 +153,19 @@ class Address
     /**
      * @return string
      */
-    public function getStreetAddress()
+    public function getAddressLine()
     {
-        return $this->streetAddress;
+        return $this->addressLine;
     }
 
     /**
-     * @param string $streetAddress
+     * @param string $addressLine
      *
      * @return $this
      */
-    public function setStreetAddress($streetAddress)
+    public function setAddressLine($addressLine)
     {
-        $this->streetAddress = $streetAddress;
+        $this->addressLine = $addressLine;
 
         return $this;
     }
@@ -167,19 +173,19 @@ class Address
     /**
      * @return string
      */
-    public function getStreetAddress2()
+    public function getAddressLine2()
     {
-        return $this->streetAddress2;
+        return $this->addressLine2;
     }
 
     /**
-     * @param string $streetAddress2
+     * @param string $addressLine2
      *
      * @return $this
      */
-    public function setStreetAddress2($streetAddress2)
+    public function setAddressLine2($addressLine2)
     {
-        $this->streetAddress2 = $streetAddress2;
+        $this->addressLine2 = $addressLine2;
 
         return $this;
     }
@@ -267,7 +273,7 @@ class Address
     /**
      * @return string
      */
-    public function getCountry()
+    public function getCountryCode()
     {
         return $this->country;
     }
@@ -277,7 +283,7 @@ class Address
      *
      * @return $this
      */
-    public function setCountry($country)
+    public function setCountryCode($country)
     {
         $this->country = $country;
 
@@ -300,6 +306,26 @@ class Address
     public function setEmail($email)
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
 
         return $this;
     }

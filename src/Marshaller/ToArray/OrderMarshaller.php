@@ -28,10 +28,9 @@ class OrderMarshaller implements ToArrayInterface
             'total_price_excluding_tax' => $object->getTotalPriceExcludingTax(),
             'total_price_including_tax' => $object->getTotalPriceIncludingTax(),
             'total_tax_amount'          => $object->getTotalTaxAmount(),
-            'merchant_urls'             => $merchantMarshaller->toArray($object->getMerchantUrl()),
             'items'                     => [],
+            'merchant_urls'             => $merchantMarshaller->toArray($object->getMerchantUrls()),
             'options'                   => $optionsMarshaller->toArray($object->getOptions()),
-            'shipping_countries'        => $object->getShippingCountries(),
         ];
 
         foreach ($object->getItems() as $item) {
@@ -40,10 +39,6 @@ class OrderMarshaller implements ToArrayInterface
 
         if ($object->getBillingAddress()) {
             $data['billing_address'] = $addressMarshaller->toArray($object->getBillingAddress());
-        }
-
-        if ($object->getShippingAddress()) {
-            $data['shipping_address'] = $addressMarshaller->toArray($object->getShippingAddress());
         }
 
         if ($object->getCustomer()) {

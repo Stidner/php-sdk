@@ -49,7 +49,7 @@ $order->setPurchaseCountry('PL')
     ->setTotalPriceIncludingTax(82500)
     ->setTotalPriceExcludingTax(66000)
     ->setTotalTaxAmount(16500)
-    ->setMerchantUrl($merchant)
+    ->setMerchantUrls($merchant)
     ->addItem($boots);
 ```
 
