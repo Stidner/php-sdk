@@ -4,7 +4,6 @@ namespace Stidner\Marshaller\ToArray\Order;
 
 use Stidner\Interfaces\ToArrayInterface;
 
-
 class ItemMarshaller implements ToArrayInterface
 {
     public function toArray($object)

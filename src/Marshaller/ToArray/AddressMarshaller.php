@@ -4,7 +4,6 @@ namespace Stidner\Marshaller\ToArray;
 
 use Stidner\Interfaces\ToArrayInterface;
 
-
 class AddressMarshaller implements ToArrayInterface
 {
     public function toArray($object)
@@ -25,9 +24,7 @@ class AddressMarshaller implements ToArrayInterface
 
         if ($object->getType() == 'business') {
             $data['business_name'] = $object->getBusinessName();
-        }
-        else
-        {
+        } else {
             $data['first_name'] = $object->getFirstName();
             $data['family_name'] = $object->getFamilyName();
         }
