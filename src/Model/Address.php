@@ -69,7 +69,6 @@ class Address
      */
     protected $type;
 
-
     /**
      * @return string
      */

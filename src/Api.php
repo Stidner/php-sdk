@@ -71,7 +71,7 @@ class Api
         $response = null;
 
         try {
-            $response = Request::post($this->getUrl() . '/v1/order', $orderData)
+            $response = Request::post($this->getUrl().'/v1/order', $orderData)
                 ->sendsJson()->send();
 
             if ($response->code == 400) {
@@ -96,7 +96,7 @@ class Api
 
     protected function getUrl()
     {
-        return $this->protocol . '://' . $this->username . ':' . $this->password . '@' . $this->apiHost;
+        return $this->protocol.'://'.$this->username.':'.$this->password.'@'.$this->apiHost;
     }
 
     /**
@@ -127,12 +127,13 @@ class Api
      */
     public function getCompleteUrl($orderId)
     {
-        if(strlen($orderId) < 3)
-        {
-            error_log("Invalid orderId passed to Stidner\\API::getCompleteUrl();");
-            print "Invalid orderId passed to Stidner\\API::getCompleteUrl();";
-            return null;
+        if (strlen($orderId) < 3) {
+            error_log('Invalid orderId passed to Stidner\\API::getCompleteUrl();');
+            echo 'Invalid orderId passed to Stidner\\API::getCompleteUrl();';
+
+            return;
         }
-        return $this->protocol . '://' . $this->apiCompleteHost . '/order/' . $orderId;
+
+        return $this->protocol.'://'.$this->apiCompleteHost.'/order/'.$orderId;
     }
 }

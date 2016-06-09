@@ -151,6 +151,7 @@ class Order
 
         return $this;
     }
+
     /**
      * @return string
      */

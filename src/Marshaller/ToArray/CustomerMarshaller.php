@@ -4,7 +4,6 @@ namespace Stidner\Marshaller\ToArray;
 
 use Stidner\Interfaces\ToArrayInterface;
 
-
 class CustomerMarshaller implements ToArrayInterface
 {
     public function toArray($object)
