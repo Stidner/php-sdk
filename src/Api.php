@@ -7,18 +7,15 @@ use Stidner\Api\ResponseException;
 use Stidner\Marshaller\FromObject\OrderMarshaller as FromObjectOrderMarshaller;
 use Stidner\Marshaller\ToArray\OrderMarshaller as ToArrayOrderMarshaller;
 use Stidner\Model\Order;
-use Stidner\Payment\PaymentHandler\PayPalHandler;
-use Stidner\Payment\PaymentHandler\StandardHandler;
 
 /**
- * Class to make using Stidner API easier.
+ * Class to make using the Stidner Order API easier.
  *
  * @author Bartłomiej Kiełbasa <bartlomiej.kielbasa@gmail.com>
  */
 class Api
 {
     private $apiHost = 'test.api.stidner.com';
-    private $apiCompleteHost = 'test.complete.stidner.com';
     private $protocol;
 
     /**
@@ -44,11 +41,11 @@ class Api
     /**
      * Api constructor.
      *
-     * @param $username
-     * @param $password
-     * @param string $protocol Possible values: http, https
+     * @param $username API user-ID
+     * @param $password API password
+     * @param string $protocol Must be https in production.
      */
-    public function __construct($username, $password, $protocol = 'http')
+    public function __construct($username, $password, $protocol = 'https')
     {
         $this->username = $username;
         $this->password = $password;
@@ -60,8 +57,8 @@ class Api
     /**
      * @param Order $order
      *
-     * @throws ApiException      throws when username or password is invalid
-     * @throws ResponseException
+     * @throws ApiException      throws upon invalid response from Stidner's API
+     * @throws ResponseException    throws upon Httpful::post failing
      *
      * @return Order
      */
@@ -72,21 +69,20 @@ class Api
 
         try {
             $response = Request::post($this->getUrl().'/v1/order', $orderData)
+                ->addHeader('Authorization', $this->encodeCredentials())
                 ->sendsJson()->send();
-
-            if ($response->code == 400) {
-                throw new ApiException('Authentication failed', 400);
-            }
-
-            if ($response->code == 412) {
-                throw new ResponseException(json_encode($response->body->details), $response->body->status);
-            }
-
-            if ($response->body->status > 400) {
-                throw new ResponseException($response->body->message, $response->body->status, null, $response->body->details);
-            }
         } catch (\Exception $e) {
             throw new ResponseException($e->getMessage(), $e->getCode(), $e);
+        }
+
+        if ($response->content_type != 'application/json')
+        {
+            throw new ApiException('Received wrong content_type response: '.$response->content_type);
+        }
+
+        if ($response->code != 200)
+        {
+            throw new ApiException(implode($response->body->details), $response->body->status);
         }
 
         $order = $this->objectOrderMarshaller->createFromObject($response->body->data);
@@ -94,46 +90,19 @@ class Api
         return $order;
     }
 
-    protected function getUrl()
-    {
-        return $this->protocol.'://'.$this->username.':'.$this->password.'@'.$this->apiHost;
-    }
-
     /**
-     * Method handles the payment checkout action.
-     *
-     * @param $orderId
-     */
-    public function handleCheckout($orderId)
-    {
-        $get = $_GET;
-        $handler = null;
-
-        if (isset($get['token']) && isset($get['PayerID'])) {
-            $handler = new PayPalHandler($orderId, $this->apiCompleteHost, $get['token'], $get['PayerID']);
-        } else {
-            $handler = new StandardHandler($orderId, $this->apiCompleteHost);
-        }
-
-        $handler->handleCheckout();
-    }
-
-    /**
-     * Returns full URL to complete site of the payment. It should be loaded in an iframe.
-     *
-     * @param $orderId
-     *
      * @return string
      */
-    public function getCompleteUrl($orderId)
+    protected function getUrl()
     {
-        if (strlen($orderId) < 3) {
-            error_log('Invalid orderId passed to Stidner\\API::getCompleteUrl();');
-            echo 'Invalid orderId passed to Stidner\\API::getCompleteUrl();';
+        return $this->protocol.'://'.$this->apiHost;
+    }
 
-            return;
-        }
-
-        return $this->protocol.'://'.$this->apiCompleteHost.'/order/'.$orderId;
+    /**
+     * @return string
+     */
+    protected function encodeCredentials()
+    {
+        return 'Basic '.base64_encode($this->username.':'.$this->password);
     }
 }

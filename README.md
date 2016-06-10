@@ -117,15 +117,6 @@ Then you load the iframe in you template.
 The customer will see a site where he will be able to finish his payment. When the payment finishes, the iframe will be redirected to the confirmation page you provided when you created the order.
 It was the 3th argument in Merchant object.
 
-If the customer choose PayPal as payment method there will be one additional step. After the iframe redirects the users browser to the PayPal site and customer complete the purchase, the customer will be redirected to checkout url in your merchant.
-In an action which handles this request in your store, you need to call `Stidner\Api::handleCheckout` method to redirect the customer's iframe to the finial step of the purchase.
-
-```php
-$api->handleCheckout($orderId);
-```
-
-This will finish execution of the code so make sure it is the last code in your action.
-
 # Generating the SDK API documentation
 
 You can generate the SDK API documentation using [phpDocumentator](https://github.com/phpDocumentor/phpDocumentor2). To generate the docs just type the command

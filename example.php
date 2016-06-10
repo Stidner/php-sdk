@@ -14,7 +14,7 @@
 require 'vendor/autoload.php';
 
 // Initiate an API handle with the login credentials.
-$api_handle = new \Stidner\Api(USER - ID - NUMBER, 'API-KEY');
+$api_handle = new \Stidner\Api(USER_ID_NUMBER, 'API-KEY');
 
 
 // Set the merchant URLs. First three are required (and can be http), last two are optional (and require https).
@@ -110,7 +110,7 @@ $order->setMerchantReference1(null)
 // And send it off; remember to properly handle any unlikely exceptions!
 try {
     $request = $api_handle->createOrder($order);
-    $iframeUrl = $api_handle->getCompleteUrl($request->getOrderId());
+    $iframeUrl = $request->getIframeUrl();
     echo "<iframe src='$iframeUrl' width='75%' height='75%'></iframe>";
 } catch (\Stidner\ApiException $e) {
     echo $e;
