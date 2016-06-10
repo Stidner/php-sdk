@@ -58,7 +58,7 @@ class Api
      * @param Order $order
      *
      * @throws ApiException      throws upon invalid response from Stidner's API
-     * @throws ResponseException    throws upon Httpful::post failing
+     * @throws ResponseException throws upon Httpful::post failing
      *
      * @return Order
      */
@@ -75,13 +75,11 @@ class Api
             throw new ResponseException($e->getMessage(), $e->getCode(), $e);
         }
 
-        if ($response->content_type != 'application/json')
-        {
+        if ($response->content_type != 'application/json') {
             throw new ApiException('Received wrong content_type response: '.$response->content_type);
         }
 
-        if ($response->code != 200)
-        {
+        if ($response->code != 200) {
             throw new ApiException(implode($response->body->details), $response->body->status);
         }
 
