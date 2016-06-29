@@ -1,20 +1,20 @@
 {
   "name": "stidner/php-sdk",
+  "description": "Stidner Complete PHP SDK",
+  "homepage": "http://developer.stidner.com",
   "authors": [
     {
-      "name": "Bartłomiej Kiełbasa",
-      "email": "bartlomiej.kielbasa@gmail.com"
+      "name": "Stidner AB",
+      "email": "contact@stidner.com",
+      "homepage": "http://stidner.com"
     }
   ],
   "require": {
-    "php": ">=5.5.0",
-    "lib-curl": "*",
+    "php": ">=5.4.0",
+    "ext-curl": "*",
     "nategood/httpful": "^0.2.20"
   },
   "autoload": {
     "psr-4": {"Stidner\\": "src/"}
-  },
-  "require-dev": {
-    "phpdocumentor/phpdocumentor": "^2.9"
   }
 }

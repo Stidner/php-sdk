@@ -3,26 +3,25 @@
    Example for manually crafting the Stidner Checkout iframe using our SDK.
    Examples and documentation here is meant to be straightforward, to get you started quickly.
 
-   For more examples, or if you want to craft requests without using our SDK for example, please
-   read the full Stidner Order API documentation at http://developer.stidner.com/.
-
-   phpDocumentor docs located at http://developer.stidner.com/phpdoc/
+   For more examples, or if you want to craft requests without using our SDK, please
+   read the full Stidner Order API documentation at http://developer.stidner.com/?php-sdk
 */
 
 
 // Include the composer autoloads, or whatever way you prefer.
-require 'vendor/autoload.php';
+require_once('vendor/autoload.php');
 
 // Initiate an API handle with the login credentials.
-$api_handle = new \Stidner\Api(USER_ID_NUMBER, 'API-KEY');
+$api_handle = new \Stidner\Api(USER_ID_NUMBER, 'API_KEY');
 
 
 // Set the merchant URLs. First three are required (and can be http), last two are optional (and require https).
-$merchant = new \Stidner\Model\Merchant('http://example.com/tos.html', //$terms (required, HTTP/HTTPS)
-    'http://example.com/checkout.php', // $checkout (required, HTTP/HTTPS)
-    'http://example.com/confirmation.php', // $confirmation (required, HTTP/HTTPS)
-    null, // $push (optional, HTTPS-only)
-    null); // $discount (optional, HTTPS-only)
+$merchant = new \Stidner\Model\Merchant();
+$merchant->setTerms('http://example.com/terms_of_service.html')
+    ->setCheckout('http://example.com/checkout.php')
+    ->setConfirmation('http://example.com/confirmation.php')
+    ->setPush(null)
+    ->setDiscount(null);
 
 
 // Optional: customize display elements on checkout.
@@ -36,11 +35,10 @@ $options->setColorButton(null)
     ->setColorLink(null)
     ->setColorBackground(null);
 
-
 // Make billing address object.
 $billingAddress = new \Stidner\Model\Address();
 $billingAddress->setType('person')
-    ->setBusinessName(null) // Do NOT use if setType("person")!
+    ->setBusinessName(null)// Do NOT use if setType("person")!
     ->setFirstName('Sven')
     ->setFamilyName('Andersson')
     ->setTitle('Mr')
@@ -52,7 +50,6 @@ $billingAddress->setType('person')
     ->setPhone('+46851972000')
     ->setEmail('email@example.com')
     ->setCountryCode('SE');
-
 
 // Add items. Each unique item in the order should have an unique ID or index.
 $item[1] = new \Stidner\Model\Order\Item();
@@ -100,7 +97,7 @@ $order->setMerchantReference1(null)
     ->setTotalPriceExcludingTax(171000)
     ->setTotalPriceIncludingTax(213750)
     ->setTotalTaxAmount(42750)
-    ->setBillingAddress($billingAddress) // Don't forget to add all the objects!
+    ->setBillingAddress($billingAddress)// Don't forget to add all the objects!
     ->addItem($item[1])
     ->addItem($item[2])
     ->setMerchantUrls($merchant)

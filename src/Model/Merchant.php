@@ -30,24 +30,6 @@ class Merchant
     protected $discount;
 
     /**
-     * Merchant constructor.
-     *
-     * @param string $terms
-     * @param string $checkout
-     * @param string $confirmation
-     * @param string $push
-     * @param string $discount
-     */
-    public function __construct($terms = null, $checkout = null, $confirmation = null, $push = null, $discount = null)
-    {
-        $this->terms = $terms;
-        $this->checkout = $checkout;
-        $this->confirmation = $confirmation;
-        $this->push = $push;
-        $this->discount = $discount;
-    }
-
-    /**
      * @return string
      */
     public function getTerms()

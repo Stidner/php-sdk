@@ -24,7 +24,7 @@ class ItemMarshaller implements ToArrayInterface
             'total_tax_amount'          => $object->getTotalTaxAmount(),
         ];
 
-        if ($object->getType() == 'physical') {
+        if ($object->getType() === 'physical') {
             $data['weight'] = $object->getWeight();
         }
 
