@@ -22,7 +22,7 @@ class AddressMarshaller implements ToArrayInterface
             'countryCode'     => $object->getCountryCode(),
         ];
 
-        if ($object->getType() == 'business') {
+        if ($object->getType() === 'business') {
             $data['business_name'] = $object->getBusinessName();
         } else {
             $data['first_name'] = $object->getFirstName();

@@ -56,37 +56,37 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
         foreach (get_object_vars($object) as $name => $value) {
             $methodName = 'set'.$this->camelize($name);
 
-            if (in_array($name, ['billing_address', 'shipping_address'])) {
+            if (in_array($name, ['billing_address', 'shipping_address'], true)) {
                 $value = $this->addressMarshaller->createFromObject($value);
                 $destinationClass->$methodName($value);
                 continue;
             }
 
-            if (in_array($name, ['customer'])) {
+            if (in_array($name, ['customer'], true)) {
                 $value = $this->customerMarshaller->createFromObject($value);
                 $destinationClass->$methodName($value);
                 continue;
             }
 
-            if (in_array($name, ['merchant_urls'])) {
+            if (in_array($name, ['merchant_urls'], true)) {
                 $value = $this->merchantMarshaller->createFromObject($value);
                 $destinationClass->setMerchantUrls($value);
                 continue;
             }
 
-            if (in_array($name, ['created_date', 'completed_date', 'updated_date'])) {
+            if (in_array($name, ['created_date', 'completed_date', 'updated_date'], true)) {
                 $value = new \DateTime($value);
                 $destinationClass->$methodName($value);
                 continue;
             }
 
-            if (in_array($name, ['options'])) {
+            if (in_array($name, ['options'], true)) {
                 $value = $this->optionsMarshaller->createFromObject($value);
                 $destinationClass->$methodName($value);
                 continue;
             }
 
-            if (in_array($name, ['items'])) {
+            if (in_array($name, ['items'], true)) {
                 $items = [];
 
                 foreach ($value as $apiItem) {

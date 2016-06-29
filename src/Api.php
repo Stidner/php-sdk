@@ -10,8 +10,6 @@ use Stidner\Model\Order;
 
 /**
  * Class to make using the Stidner Order API easier.
- *
- * @author Bartłomiej Kiełbasa <bartlomiej.kielbasa@gmail.com>
  */
 class Api
 {
@@ -41,8 +39,8 @@ class Api
     /**
      * Api constructor.
      *
-     * @param $username API user-ID
-     * @param $password API password
+     * @param int    $username API user-ID
+     * @param string $password API password
      * @param string $protocol Must be https in production.
      */
     public function __construct($username, $password, $protocol = 'https')
@@ -75,17 +73,15 @@ class Api
             throw new ResponseException($e->getMessage(), $e->getCode(), $e);
         }
 
-        if ($response->content_type != 'application/json') {
+        if ($response->content_type !== 'application/json') {
             throw new ApiException('Received wrong content_type response: '.$response->content_type);
         }
 
-        if ($response->code != 200) {
-            throw new ApiException(implode($response->body->details), $response->body->status);
+        if ($response->code !== 200) {
+            throw new ApiException($response, $response->body->status);
         }
 
-        $order = $this->objectOrderMarshaller->createFromObject($response->body->data);
-
-        return $order;
+        return $this->objectOrderMarshaller->createFromObject($response->body->data);
     }
 
     /**
@@ -102,5 +98,36 @@ class Api
     protected function encodeCredentials()
     {
         return 'Basic '.base64_encode($this->username.':'.$this->password);
+    }
+
+    /**
+     * @param string $orderID
+     *
+     * @throws ApiException      throws upon invalid response from Stidner's API
+     * @throws ResponseException throws upon Httpful::get failing
+     *
+     * @return Order
+     */
+    public function getOrder($orderID)
+    {
+        $response = null;
+
+        try {
+            $response = Request::get($this->getUrl().'/v1/order/'.$orderID)
+                ->addHeader('Authorization', $this->encodeCredentials())
+                ->send();
+        } catch (\Exception $e) {
+            throw new ResponseException($e->getMessage(), $e->getCode(), $e);
+        }
+
+        if ($response->content_type !== 'application/json') {
+            throw new ApiException('Received wrong content_type response: '.$response->content_type);
+        }
+
+        if ($response->code !== 200) {
+            throw new ApiException($response, $response->body->status);
+        }
+
+        return $this->objectOrderMarshaller->createFromObject($response->body->data);
     }
 }

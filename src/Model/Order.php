@@ -213,7 +213,7 @@ class Order
     }
 
     /**
-     * @return string
+     * @return string Returns "purchase_incomplete" (default), "purchase_complete", or "purchase_refunded".
      */
     public function getStatus()
     {

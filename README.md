@@ -3,124 +3,103 @@
 Stidner PHP SDK
 ===============
 
-# Installation and requirements
+# Requirements
 
-The SDK requires min PHP 5.5 and curl plugin installed. To install the library use composer:
+At least PHP 5.4.
 
-    composer require Stidner/php-sdk
+# Installation
+
+Please install the SDK via [Composer](https://getcomposer.org/).
+
+    composer require stidner/php-sdk
+
+And then load the SDK using Composer's autoload:
+
+    require_once('vendor/autoload.php');
+
+# Dependencies
+
+The SDK depends on:
+
+- The [`Httpful`](https://github.com/nategood/httpful) library,
+- and the `curl` extension.
+
+When using Composer, these should be automatically handled.
 
 # Usage
 
-To create new order using Stidner SDK you need to create new API instance. 
+We suggest you read our full documentation at [http://developer.stidner.com](http://developer.stidner.com/?php-sdk).
+
+## Create new order
+
+...but to summarize, you need to:
+
+1) Create a new API instance; this includes your API key and user ID.
 
 ```php
-$api = new \Stidner\Api(1, 'somepasswordgoeshere');
+$api_handle = new \Stidner\Api(API_USER_ID, 'API_KEY');
 ```
 
-The next step is creating order items. The order item represents a product. Example order item is available below:
+2) Craft the various objects that the API requires.
+Please click the links for complete example code.
+
+Required:
+- [merchant URLs](http://developer.stidner.com/?php-sdk#urls-subobject),
+- [items array](http://developer.stidner.com/?php-sdk#item-subobject).
+
+Optional:
+- [billing address](http://developer.stidner.com/?php-sdk#address-subobject),
+- [checkout options](http://developer.stidner.com/?php-sdk#options-subobject).
+
+3) Create the [Order](http://developer.stidner.com/?php-sdk#order-object) object, which contains the above objects and a few final variables.
 
 ```php
-$boots = new \Stidner\Model\Order\Item();
-$boots->setType('physical')
-    ->setArtno(123456)
-    ->setName('My favorite boots')
-    ->setWeight(1200)
-    ->setQuantity(1)
-    ->setQuantityUnit('kg')
-    ->setUnitPrice(66000)
-    ->setTaxRate(2500)
-    ->setTotalPriceIncludingTax(82500)
-    ->setTotalPriceExcludingTax(66000)
-    ->setTotalTaxAmount(16500);
-```
-
-All the attributes are described in the API documentation.
-
-## Creating the order
-
-```php
-$merchant = new \Stidner\Model\Merchant('http://test.com', 'http://test.com', 'http://test.com');
-    
 $order = new \Stidner\Model\Order();
-    
-$order->setPurchaseCountry('PL')
-    ->setPurchaseCurrency('PLN')
-    ->setLocale('pl_pl')
-    ->setTotalPriceIncludingTax(82500)
-    ->setTotalPriceExcludingTax(66000)
-    ->setTotalTaxAmount(16500)
+$order->setMerchantReference1(null)
+    ->setMerchantReference2(null)
+    ->setPurchaseCountry('SE')
+    ->setPurchaseCurrency('SEK')
+    ->setLocale('sv_se')
+    ->setTotalPriceExcludingTax(171000)
+    ->setTotalPriceIncludingTax(213750)
+    ->setTotalTaxAmount(42750)
+    ->setBillingAddress($billingAddress) // Don't forget to add all the objects!
+    ->addItem($item[1])
+    ->addItem($item[2])
     ->setMerchantUrls($merchant)
-    ->addItem($boots);
+    ->setOptions($options);
 ```
 
-The three arguments in Merchant model are:
-
-* **terms** - URL to the merchant’s terms and conditions page.
-* **checkout** - URL to the merchant’s checkout page.
-* **confirmation** - URL to the merchant’s confirmation page.
-
-They are all required.
-
-### Adding address information about customer
-
-To add billing address or shipping address you need to create new instance of Stidner\Model\Address class.
-
-```php
-$billingAddress = new \Stidner\Model\Address();
-
-$billingAddress->setFirstName("John")
-    ->setCountry('PL')
-    ->setFamilyName("Due");
-```
-
-and add it to the order
-
-```php
-$order->setBillingAddress($billingAddress);
-// or
-$order->setShippingAddress($shippingAddress);
-```
-
-The final step is sending the order information to the server. You can do that by using the Stidner\Api::createOrder method. Example:
+4) Finally, send the now-complete json object off to the API server! If successful, the response should be the entire order object, and include a URL to our Stidner Complete payment system; this URL should be loaded in an iframe on your checkout page!
 
 ```php
 try {
-    $api->createOrder($order);
-}
-catch(\Stidner\ApiException $e) {
-    // authorization error
-}
-catch(\Stidner\Api\ResponseException $e) {
-    // any other error. You can fetch the messages using Stidner\Api\ResponseException::getMessages method
+    $request = $api_handle->createOrder($order);
+    $iframeUrl = $request->getIframeUrl();
+    echo "<iframe src='$iframeUrl' width='75%' height='75%'></iframe>";
+} catch (\Stidner\ApiException $e) {
+    print $e;
+} catch (\Stidner\Api\ResponseException $e) {
+    print $e;
 }
 ```
 
-Possible error codes are:
+## Checking an order's status
 
- - **200** - everything went OK, no errors
- - **412** - validation failed on some variable. More details are available in `$e->getMessages()`
-
-# Handling the checkout process
-
-When the order is created you should open an iframe with address provided by method `Stidner\Api::getCompleteUrl`. Example usage of the method is available below:
+Same with creating an order, you must create the API instance:
 
 ```php
-$iframeUrl = $api->getCompleteUrl($order->getOrderId());
+$api_handle = new \Stidner\Api(API_USER_ID, 'API_KEY');
 ```
 
-Then you load the iframe in you template.
+Now do getOrder(), with the orderID as a parameter. This loads the entire order json object from the API.
 
-```html
-<iframe src="<?=$iframeUlr?>"></iframe>
+```php
+$request = $api_handle->getOrder('ODVhYWRlZjItMTUyYy00Mjk2LWFiMWMtYTRmY2RlYTBjYmU1');
 ```
 
-The customer will see a site where he will be able to finish his payment. When the payment finishes, the iframe will be redirected to the confirmation page you provided when you created the order.
-It was the 3th argument in Merchant object.
+Finally, getStatus() on the response's json object. This will be: purchase_incomplete, purchase_complete, or purchase_refunded.
+```php
+$orderStatus = $request->getStatus();
+```
 
-# Generating the SDK API documentation
-
-You can generate the SDK API documentation using [phpDocumentator](https://github.com/phpDocumentor/phpDocumentor2). To generate the docs just type the command
-
-    ./vendor/bin/phpdoc -d ./src/ -t docs
-
-and then open with your web browser file ./docs/index.html
