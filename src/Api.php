@@ -39,7 +39,7 @@ class Api
     /**
      * Api constructor.
      *
-     * @param int $username API user-ID
+     * @param int    $username API user-ID
      * @param string $password API password
      * @param string $protocol Must be https (default) in production.
      */
@@ -66,7 +66,7 @@ class Api
         $response = null;
 
         try {
-            $response = Request::post($this->getUrl() . '/v1/order', $orderData)
+            $response = Request::post($this->getUrl().'/v1/order', $orderData)
                 ->addHeader('Authorization', $this->encodeCredentials())
                 ->sendsJson()->send();
         } catch (\Exception $e) {
@@ -74,7 +74,7 @@ class Api
         }
 
         if ($response->content_type !== 'application/json') {
-            throw new ApiException('Received wrong content_type response: ' . $response->content_type);
+            throw new ApiException('Received wrong content_type response: '.$response->content_type);
         }
 
         if ($response->code !== 200) {
@@ -89,7 +89,7 @@ class Api
      */
     protected function getUrl()
     {
-        return $this->protocol . '://' . $this->apiHost;
+        return $this->protocol.'://'.$this->apiHost;
     }
 
     /**
@@ -97,7 +97,7 @@ class Api
      */
     protected function encodeCredentials()
     {
-        return 'Basic ' . base64_encode($this->username . ':' . $this->password);
+        return 'Basic '.base64_encode($this->username.':'.$this->password);
     }
 
     /**
@@ -113,7 +113,7 @@ class Api
         $response = null;
 
         try {
-            $response = Request::get($this->getUrl() . '/v1/order/' . $orderID)
+            $response = Request::get($this->getUrl().'/v1/order/'.$orderID)
                 ->addHeader('Authorization', $this->encodeCredentials())
                 ->send();
         } catch (\Exception $e) {
@@ -121,7 +121,7 @@ class Api
         }
 
         if ($response->content_type !== 'application/json') {
-            throw new ApiException('Received wrong content_type response: ' . $response->content_type);
+            throw new ApiException('Received wrong content_type response: '.$response->content_type);
         }
 
         if ($response->code !== 200) {

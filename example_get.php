@@ -2,7 +2,7 @@
 /*
    Example for fetching the status of an order using our SDK.
    Examples and documentation here is meant to be straightforward, to get you started quickly.
-   
+
    For more examples, or if you want to craft requests without using our SDK, please
    read the full Stidner Order API documentation at http://developer.stidner.com/?php-sdk
 */
@@ -36,7 +36,6 @@ try {
             echo 'Unknown response.';
             break;
     }
-
 } catch (\Stidner\ApiException $e) {
     echo $e;
 } catch (\Stidner\Api\ResponseException $e) {

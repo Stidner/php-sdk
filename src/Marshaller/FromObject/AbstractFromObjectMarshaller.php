@@ -15,7 +15,7 @@ abstract class AbstractFromObjectMarshaller implements FromObjectMarshaller
     {
         if (is_object($object)) {
             foreach (get_object_vars($object) as $name => $value) {
-                $methodName = 'set' . $this->camelize($name);
+                $methodName = 'set'.$this->camelize($name);
 
                 if (method_exists($destinationClass, $methodName)) {
                     $destinationClass->$methodName($value);
