@@ -95,7 +95,7 @@ $api_handle = new \Stidner\Api(API_USER_ID, 'API_KEY');
 Now do getOrder(), with the orderID as a parameter. This loads the entire order json object from the API.
 
 ```php
-$request = $api_handle->getOrder('ODVhYWRlZjItMTUyYy00Mjk2LWFiMWMtYTRmY2RlYTBjYmU1');
+$request = $api_handle->getOrder('ORDER_ID');
 ```
 
 Finally, getStatus() on the response's json object. This will be: purchase_incomplete, purchase_complete, or purchase_refunded.

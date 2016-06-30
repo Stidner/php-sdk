@@ -7,6 +7,7 @@
    read the full Stidner Order API documentation at http://developer.stidner.com/?php-sdk
 */
 
+
 // Include the composer autoloads, or whatever way you prefer.
 require_once 'vendor/autoload.php';
 
