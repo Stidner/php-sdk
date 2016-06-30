@@ -19,7 +19,6 @@ class OrderMarshaller implements ToArrayInterface
         $optionsMarshaller = new OptionsMarshaller();
         $itemMarshaller = new ItemMarshaller();
         $addressMarshaller = new AddressMarshaller();
-        $customerMarshaller = new CustomerMarshaller();
 
         $data = [
             'purchase_country'          => $object->getPurchaseCountry(),
@@ -39,10 +38,6 @@ class OrderMarshaller implements ToArrayInterface
 
         if ($object->getBillingAddress()) {
             $data['billing_address'] = $addressMarshaller->toArray($object->getBillingAddress());
-        }
-
-        if ($object->getCustomer()) {
-            $data['customer'] = $customerMarshaller->toArray($object->getCustomer());
         }
 
         $optionalParameters = [

@@ -40,6 +40,22 @@ class Order
     protected $status;
 
     /**
+     * @var string
+     */
+    protected $shipmentStatus;
+
+    /**
+     * @var string
+     */
+    protected $shipmentCarrier;
+
+    /**
+     * @var string
+     */
+    protected $shipmentProduct;
+
+
+    /**
      * @var Address
      */
     protected $billingAddress;
@@ -53,11 +69,6 @@ class Order
      * @var string
      */
     protected $comment;
-
-    /**
-     * @var Customer
-     */
-    protected $customer;
 
     /**
      * @var Merchant
@@ -233,6 +244,66 @@ class Order
     }
 
     /**
+     * @return string Returns "choosing_provider" (default), "pending", or "shipped".
+     */
+    public function getShipmentStatus()
+    {
+        return $this->shipmentStatus;
+    }
+
+    /**
+     * @param string $shipmentStatus
+     *
+     * @return $this
+     */
+    public function setShipmentStatus($shipmentStatus)
+    {
+        $this->shipmentStatus = $shipmentStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShipmentCarrier()
+    {
+        return $this->shipmentCarrier;
+    }
+
+    /**
+     * @param string $shipmentCarrier
+     *
+     * @return $this
+     */
+    public function setShipmentCarrier($shipmentCarrier)
+    {
+        $this->shipmentCarrier = $shipmentCarrier;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShipmentProduct()
+    {
+        return $this->shipmentProduct;
+    }
+
+    /**
+     * @param string $shipmentProduct
+     *
+     * @return $this
+     */
+    public function setShipmentProduct($shipmentProduct)
+    {
+        $this->shipmentProduct = $shipmentProduct;
+
+        return $this;
+    }
+
+    /**
      * @return Address
      */
     public function getBillingAddress()
@@ -288,26 +359,6 @@ class Order
     public function setComment($comment)
     {
         $this->comment = $comment;
-
-        return $this;
-    }
-
-    /**
-     * @return Customer
-     */
-    public function getCustomer()
-    {
-        return $this->customer;
-    }
-
-    /**
-     * @param Customer $customer
-     *
-     * @return $this
-     */
-    public function setCustomer($customer)
-    {
-        $this->customer = $customer;
 
         return $this;
     }

@@ -7,8 +7,9 @@
    read the full Stidner Order API documentation at http://developer.stidner.com/?php-sdk
 */
 
+
 // Include the composer autoloads, or whatever way you prefer.
-require_once('vendor/autoload.php');
+require_once 'vendor/autoload.php';
 
 // Initiate an API handle with the login credentials.
 $api_handle = new \Stidner\Api(USER_ID_NUMBER, 'API_KEY');

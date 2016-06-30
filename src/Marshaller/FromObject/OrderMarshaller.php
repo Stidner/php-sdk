@@ -14,11 +14,6 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
     protected $addressMarshaller;
 
     /**
-     * @var CustomerMarshaller
-     */
-    protected $customerMarshaller;
-
-    /**
      * @var MerchantMarshaller
      */
     protected $merchantMarshaller;
@@ -36,7 +31,6 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
     public function __construct()
     {
         $this->addressMarshaller = new AddressMarshaller();
-        $this->customerMarshaller = new CustomerMarshaller();
         $this->merchantMarshaller = new MerchantMarshaller();
         $this->itemMarshaller = new ItemMarshaller();
         $this->optionsMarshaller = new OptionsMarshaller();
@@ -54,50 +48,38 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
     protected function copyProperties($destinationClass, $object)
     {
         foreach (get_object_vars($object) as $name => $value) {
-            $methodName = 'set'.$this->camelize($name);
+            $methodName = 'set' . $this->camelize($name);
 
-            if (in_array($name, ['billing_address', 'shipping_address'], true)) {
-                $value = $this->addressMarshaller->createFromObject($value);
-                $destinationClass->$methodName($value);
-                continue;
+            switch ($name) {
+                case 'billing_address':
+                case 'shipping_address':
+                    $value = $this->addressMarshaller->createFromObject($value);
+                    break;
+
+                case 'merchant_urls':
+                    $value = $this->merchantMarshaller->createFromObject($value);
+                    break;
+
+                case 'created_date':
+                case 'completed_date':
+                case 'updated_date':
+                    $value = new \DateTime($value);
+                    break;
+
+                case 'options':
+                    $value = $this->optionsMarshaller->createFromObject($value);
+                    break;
+
+                case 'items':
+                    $items = [];
+                    foreach ($value as $apiItem) {
+                        $items[] = $this->itemMarshaller->createFromObject($apiItem);
+                    }
+                    $destinationClass->$methodName($items);
+                    break;
             }
 
-            if (in_array($name, ['customer'], true)) {
-                $value = $this->customerMarshaller->createFromObject($value);
-                $destinationClass->$methodName($value);
-                continue;
-            }
-
-            if (in_array($name, ['merchant_urls'], true)) {
-                $value = $this->merchantMarshaller->createFromObject($value);
-                $destinationClass->setMerchantUrls($value);
-                continue;
-            }
-
-            if (in_array($name, ['created_date', 'completed_date', 'updated_date'], true)) {
-                $value = new \DateTime($value);
-                $destinationClass->$methodName($value);
-                continue;
-            }
-
-            if (in_array($name, ['options'], true)) {
-                $value = $this->optionsMarshaller->createFromObject($value);
-                $destinationClass->$methodName($value);
-                continue;
-            }
-
-            if (in_array($name, ['items'], true)) {
-                $items = [];
-
-                foreach ($value as $apiItem) {
-                    $items[] = $this->itemMarshaller->createFromObject($apiItem);
-                }
-
-                $destinationClass->$methodName($items);
-                continue;
-            }
-
-            if (method_exists($destinationClass, $methodName)) {
+            if ($name !== 'items' && method_exists($destinationClass, $methodName)) {
                 $destinationClass->$methodName($value);
             }
         }

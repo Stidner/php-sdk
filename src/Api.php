@@ -41,7 +41,7 @@ class Api
      *
      * @param int $username API user-ID
      * @param string $password API password
-     * @param string $protocol Must be https in production.
+     * @param string $protocol Must be https (default) in production.
      */
     public function __construct($username, $password, $protocol = 'https')
     {
