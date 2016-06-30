@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner;
 
 use Httpful\Request;
@@ -25,7 +24,6 @@ use Stidner\Model\Order;
 
 /**
  * Class to make using the Stidner Order API easier.
- * @package Stidner
  */
 class Api
 {
@@ -105,7 +103,7 @@ class Api
     }
 
     /**
-     * Makes a base64-encoded string from $this->username:$this->password
+     * Makes a base64-encoded string from $this->username:$this->password.
      *
      * @return string a base64-encoded string.
      */

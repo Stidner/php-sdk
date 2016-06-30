@@ -14,19 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Marshaller\ToArray;
 
 use Stidner\Interfaces\ToArrayInterface;
 
 /**
- * Class AddressMarshaller
- * @package Stidner\Marshaller\ToArray
+ * Class AddressMarshaller.
  */
 class AddressMarshaller implements ToArrayInterface
 {
     /**
      * @param $object
+     *
      * @return array
      */
     public function toArray($object)

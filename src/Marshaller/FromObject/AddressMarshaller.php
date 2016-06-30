@@ -14,19 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Marshaller\FromObject;
 
 use Stidner\Model\Address;
 
 /**
- * Class AddressMarshaller
- * @package Stidner\Marshaller\FromObject
+ * Class AddressMarshaller.
  */
 class AddressMarshaller extends AbstractFromObjectMarshaller
 {
     /**
      * @param $object
+     *
      * @return Address
      */
     public function createFromObject($object)

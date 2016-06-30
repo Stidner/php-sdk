@@ -14,19 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Marshaller\FromObject;
 
 use Stidner\Model\Merchant;
 
 /**
- * Class MerchantMarshaller
- * @package Stidner\Marshaller\FromObject
+ * Class MerchantMarshaller.
  */
 class MerchantMarshaller extends AbstractFromObjectMarshaller
 {
     /**
      * @param $object
+     *
      * @return Merchant
      */
     public function createFromObject($object)

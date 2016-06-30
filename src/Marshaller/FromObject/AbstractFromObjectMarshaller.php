@@ -14,14 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Marshaller\FromObject;
 
 use Stidner\Interfaces\FromObjectMarshaller;
 
 /**
- * Class AbstractFromObjectMarshaller
- * @package Stidner\Marshaller\FromObject
+ * Class AbstractFromObjectMarshaller.
  */
 abstract class AbstractFromObjectMarshaller implements FromObjectMarshaller
 {
@@ -31,6 +29,7 @@ abstract class AbstractFromObjectMarshaller implements FromObjectMarshaller
      * Example: camelize('billing_address') results 'billingAddress'.
      *
      * @param string $input
+     *
      * @return string
      */
     protected function camelize($input)

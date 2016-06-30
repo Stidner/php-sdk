@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Marshaller\ToArray;
 
 use Stidner\Interfaces\ToArrayInterface;
@@ -23,13 +22,13 @@ use Stidner\Marshaller\ToArray\Order\OptionsMarshaller;
 use Stidner\Model\Order;
 
 /**
- * Class OrderMarshaller
- * @package Stidner\Marshaller\ToArray
+ * Class OrderMarshaller.
  */
 class OrderMarshaller implements ToArrayInterface
 {
     /**
      * @param $object
+     *
      * @return array
      */
     public function toArray($object)

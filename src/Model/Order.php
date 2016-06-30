@@ -14,15 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Model;
 
 use Stidner\Model\Order\Options;
 use Stidner\Traits\PriceTrait;
 
 /**
- * Class Order
- * @package Stidner\Model
+ * Class Order.
  */
 class Order
 {
@@ -564,6 +562,7 @@ class Order
 
     /**
      * @param Order\Item $item
+     *
      * @return $this
      */
     public function addItem(Order\Item $item)

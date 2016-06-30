@@ -14,17 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Interfaces;
 
 /**
- * Interface ToArrayInterface
- * @package Stidner\Interfaces
+ * Interface ToArrayInterface.
  */
 interface ToArrayInterface
 {
     /**
      * @param $object
+     *
      * @return mixed
      */
     public function toArray($object);
