@@ -103,3 +103,6 @@ Finally, getStatus() on the response's json object. This will be: purchase_incom
 $orderStatus = $request->getStatus();
 ```
 
+# License
+
+Stidner's PHP SDK is licensed under the [Apache License, Version 2](https://www.apache.org/licenses/LICENSE-2.0).

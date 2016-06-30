@@ -1,4 +1,19 @@
 <?php
+/**
+ * Copyright 2016 Stidner Complete AB
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 namespace Stidner\Marshaller\FromObject;
 
@@ -6,6 +21,10 @@ use Stidner\Marshaller\FromObject\Order\ItemMarshaller;
 use Stidner\Marshaller\FromObject\Order\OptionsMarshaller;
 use Stidner\Model\Order;
 
+/**
+ * Class OrderMarshaller
+ * @package Stidner\Marshaller\FromObject
+ */
 class OrderMarshaller extends AbstractFromObjectMarshaller
 {
     /**
@@ -28,6 +47,9 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
      */
     protected $optionsMarshaller;
 
+    /**
+     * OrderMarshaller constructor.
+     */
     public function __construct()
     {
         $this->addressMarshaller = new AddressMarshaller();
@@ -36,6 +58,10 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
         $this->optionsMarshaller = new OptionsMarshaller();
     }
 
+    /**
+     * @param $object
+     * @return Order
+     */
     public function createFromObject($object)
     {
         $order = new Order();
@@ -45,6 +71,10 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
         return $order;
     }
 
+    /**
+     * @param $destinationClass
+     * @param $object
+     */
     protected function copyProperties($destinationClass, $object)
     {
         foreach (get_object_vars($object) as $name => $value) {

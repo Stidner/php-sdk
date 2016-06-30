@@ -12,7 +12,7 @@
 require_once 'vendor/autoload.php';
 
 // Initiate an API handle with the login credentials.
-$api_handle = new \Stidner\Api(USER_ID_NUMBER, 'API_KEY');
+$api_handle = new \Stidner\Api(USER_ID_NUMBER, 'API_KEY', 'test.api.stidner.com');
 
 
 // Set the merchant URLs. First three are required (and can be http), last two are optional (and require https).
