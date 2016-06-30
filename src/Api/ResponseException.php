@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Api;
 
 /**
@@ -29,10 +28,11 @@ class ResponseException extends \Exception
 
     /**
      * ResponseException constructor.
-     * @param string $message
-     * @param int $code
+     *
+     * @param string          $message
+     * @param int             $code
      * @param \Exception|null $previous
-     * @param array $messages
+     * @param array           $messages
      */
     public function __construct($message = '', $code = 0, \Exception $previous = null, $messages = [])
     {

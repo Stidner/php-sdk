@@ -14,12 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Model;
 
 /**
- * Class Merchant
- * @package Stidner\Model
+ * Class Merchant.
  */
 class Merchant
 {

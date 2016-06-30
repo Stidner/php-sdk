@@ -14,12 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Model\Order;
 
 /**
- * Class Options
- * @package Stidner\Model\Order
+ * Class Options.
  */
 class Options
 {

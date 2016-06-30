@@ -14,17 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Interfaces;
 
 /**
- * Interface FromObjectMarshaller
- * @package Stidner\Interfaces
+ * Interface FromObjectMarshaller.
  */
 interface FromObjectMarshaller
 {
     /**
      * @param $object
+     *
      * @return mixed
      */
     public function createFromObject($object);

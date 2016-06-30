@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 namespace Stidner\Marshaller\FromObject;
 
 use Stidner\Marshaller\FromObject\Order\ItemMarshaller;
@@ -22,8 +21,7 @@ use Stidner\Marshaller\FromObject\Order\OptionsMarshaller;
 use Stidner\Model\Order;
 
 /**
- * Class OrderMarshaller
- * @package Stidner\Marshaller\FromObject
+ * Class OrderMarshaller.
  */
 class OrderMarshaller extends AbstractFromObjectMarshaller
 {
@@ -60,6 +58,7 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
 
     /**
      * @param $object
+     *
      * @return Order
      */
     public function createFromObject($object)
