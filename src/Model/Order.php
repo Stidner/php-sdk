@@ -88,6 +88,11 @@ class Order
     protected $comment;
 
     /**
+     * @var boolean
+     */
+    protected $freeShipping;
+
+    /**
      * @var Merchant
      */
     protected $merchantUrl;
@@ -120,7 +125,7 @@ class Order
     /**
      * @var array
      */
-    protected $shippingCountries = [];
+    protected $shipmentCountries = [];
 
     /**
      * @var Order\Item[]
@@ -381,6 +386,26 @@ class Order
     }
 
     /**
+     * @return string
+     */
+    public function getFreeShipping()
+    {
+        return $this->freeShipping;
+    }
+
+    /**
+     * @param boolean $freeShipping
+     *
+     * @return $this
+     */
+    public function setFreeShipping($freeShipping)
+    {
+        $this->freeShipping = (bool)$freeShipping;
+
+        return $this;
+    }
+
+    /**
      * @return Merchant
      */
     public function getMerchantUrls()
@@ -503,19 +528,19 @@ class Order
     /**
      * @return array
      */
-    public function getShippingCountries()
+    public function getShipmentCountries()
     {
-        return $this->shippingCountries;
+        return $this->shipmentCountries;
     }
 
     /**
-     * @param array $shippingCountries
+     * @param array $shipmentCountries
      *
      * @return $this
      */
-    public function setShippingCountries($shippingCountries)
+    public function setShipmentCountries($shipmentCountries)
     {
-        $this->shippingCountries = $shippingCountries;
+        $this->shipmentCountries = $shipmentCountries;
 
         return $this;
     }

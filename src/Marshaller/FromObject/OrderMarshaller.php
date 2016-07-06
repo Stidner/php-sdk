@@ -22,6 +22,10 @@ use Stidner\Model\Order;
 
 /**
  * Class OrderMarshaller.
+ *
+ * Marshaller for the API server's json response -> PHP array
+ *
+ * @package Stidner\Marshaller\FromObject
  */
 class OrderMarshaller extends AbstractFromObjectMarshaller
 {

@@ -23,20 +23,20 @@ use Stidner\Model\Order;
 
 /**
  * Class OrderMarshaller.
+ *
+ * Marshalls the SDK's php arrays -> json object.
+ *
+ * @package Stidner\Marshaller\ToArray
  */
 class OrderMarshaller implements ToArrayInterface
 {
     /**
-     * @param $object
      *
+     * @param Order $object
      * @return array
      */
     public function toArray($object)
     {
-        /*
-         * @var Order $object
-         */
-
         $merchantMarshaller = new MerchantMarshaller();
         $optionsMarshaller = new OptionsMarshaller();
         $itemMarshaller = new ItemMarshaller();
@@ -65,6 +65,9 @@ class OrderMarshaller implements ToArrayInterface
         $optionalParameters = [
             'merchant_reference1' => 'getMerchantReference1',
             'merchant_reference2' => 'getMerchantReference2',
+            'shipment_countries'  => 'getShipmentCountries',
+            'free_shipping'       => 'getFreeShipping',
+            'comment'             => 'getComment',
         ];
 
         foreach ($optionalParameters as $key => $value) {
