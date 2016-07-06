@@ -88,7 +88,7 @@ class Order
     protected $comment;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $freeShipping;
 
@@ -394,13 +394,13 @@ class Order
     }
 
     /**
-     * @param boolean $freeShipping
+     * @param bool $freeShipping
      *
      * @return $this
      */
     public function setFreeShipping($freeShipping)
     {
-        $this->freeShipping = (bool)$freeShipping;
+        $this->freeShipping = (bool) $freeShipping;
 
         return $this;
     }
