@@ -1,13 +1,42 @@
 <?php
-
+/**
+ * Copyright 2016 Stidner Complete AB.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 namespace Stidner\Model;
 
 use Stidner\Model\Order\Options;
-use Stidner\Traits\PriceTrait;
 
+/**
+ * Class Order.
+ */
 class Order
 {
-    use PriceTrait;
+    /**
+     * @var int
+     */
+    protected $totalPriceExcludingTax;
+
+    /**
+     * @var int
+     */
+    protected $totalTaxAmount;
+
+    /**
+     * @var int
+     */
+    protected $totalPriceIncludingTax;
 
     /**
      * @var string
@@ -71,6 +100,11 @@ class Order
     protected $comment;
 
     /**
+     * @var bool
+     */
+    protected $freeShipping;
+
+    /**
      * @var Merchant
      */
     protected $merchantUrl;
@@ -103,7 +137,7 @@ class Order
     /**
      * @var array
      */
-    protected $shippingCountries = [];
+    protected $shipmentCountries = [];
 
     /**
      * @var Order\Item[]
@@ -244,7 +278,7 @@ class Order
     }
 
     /**
-     * @return string Returns "choosing_provider" (default), "pending", or "shipped".
+     * @return string Returns "no_shipping" (default), "pending", or "shipped".
      */
     public function getShipmentStatus()
     {
@@ -359,6 +393,26 @@ class Order
     public function setComment($comment)
     {
         $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFreeShipping()
+    {
+        return $this->freeShipping;
+    }
+
+    /**
+     * @param bool $freeShipping
+     *
+     * @return $this
+     */
+    public function setFreeShipping($freeShipping)
+    {
+        $this->freeShipping = (bool) $freeShipping;
 
         return $this;
     }
@@ -486,19 +540,19 @@ class Order
     /**
      * @return array
      */
-    public function getShippingCountries()
+    public function getShipmentCountries()
     {
-        return $this->shippingCountries;
+        return $this->shipmentCountries;
     }
 
     /**
-     * @param array $shippingCountries
+     * @param array $shipmentCountries
      *
      * @return $this
      */
-    public function setShippingCountries($shippingCountries)
+    public function setShipmentCountries($shipmentCountries)
     {
-        $this->shippingCountries = $shippingCountries;
+        $this->shipmentCountries = $shipmentCountries;
 
         return $this;
     }
@@ -524,6 +578,98 @@ class Order
     }
 
     /**
+     * @param Order\Item $item
+     *
+     * @return $this
+     */
+    public function addItem(Order\Item $item)
+    {
+        $this->items[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalPriceExcludingTax()
+    {
+        return $this->totalPriceExcludingTax;
+    }
+
+    /**
+     * @param int $totalPriceExcludingTax
+     *
+     * @return $this
+     */
+    public function setTotalPriceExcludingTax($totalPriceExcludingTax)
+    {
+        $this->totalPriceExcludingTax = $totalPriceExcludingTax;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalTaxAmount()
+    {
+        return $this->totalTaxAmount;
+    }
+
+    /**
+     * @param int $totalTaxAmount
+     *
+     * @return $this
+     */
+    public function setTotalTaxAmount($totalTaxAmount)
+    {
+        $this->totalTaxAmount = $totalTaxAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalPriceIncludingTax()
+    {
+        return $this->totalPriceIncludingTax;
+    }
+
+    /**
+     * @param int $totalPriceIncludingTax
+     *
+     * @return $this
+     */
+    public function setTotalPriceIncludingTax($totalPriceIncludingTax)
+    {
+        $this->totalPriceIncludingTax = $totalPriceIncludingTax;
+
+        return $this;
+    }
+
+    /**
+     * @return $this Total price values for all items contained in the order.
+     *
+     * This function should not be run until all items have been added to the order.
+     */
+    public function calculateTotalPrices()
+    {
+        $this->totalPriceExcludingTax = 0;
+        $this->totalTaxAmount = 0;
+        $this->totalPriceIncludingTax = 0;
+
+        foreach ($this->getItems() as $key) {
+            $this->totalPriceExcludingTax += ($key->getTotalPriceExcludingTax() * $key->getQuantity());
+            $this->totalTaxAmount += ($key->getTaxRate() * $key->getTotalPriceExcludingTax() / 10000);
+        }
+        $this->totalPriceIncludingTax = ($this->totalPriceExcludingTax + $this->totalTaxAmount);
+
+        return $this;
+    }
+
+    /**
      * @return Order\Item[]
      */
     public function getItems()
@@ -539,13 +685,6 @@ class Order
     public function setItems($items)
     {
         $this->items = $items;
-
-        return $this;
-    }
-
-    public function addItem(Order\Item $item)
-    {
-        $this->items[] = $item;
 
         return $this;
     }

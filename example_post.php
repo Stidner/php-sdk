@@ -54,24 +54,22 @@ $billingAddress->setType('person')
 // Add items. Each unique item in the order should have an unique ID or index.
 $item[1] = new \Stidner\Model\Order\Item();
 $item[1]->setType('digital')
-    ->setArtno('123456')
-    ->setSku('5205-250SE')
-    ->setName('World of Warcraft: The Burning Crusade Collectors edition')
-    ->setDescription('Latest game')
+    ->setArtno('160830')
+    ->setSku('8000-660SE')
+    ->setName('World of Warcraft: Legion')
+    ->setDescription('Digital download')
     ->setWeight(null)
     ->setQuantity(1)
     ->setQuantityUnit('pcs')
     ->setUnitPrice(66000)
     ->setTaxRate(2500)
-    ->setTotalPriceExcludingTax(66000)
-    ->setTotalPriceIncludingTax(82500)
-    ->setTotalTaxAmount(16500)
+    ->calculateItemPrice()
     ->setImageUrl('https://example.com/game.jpg');
 
 // One more unique item (again, using a unique variable or index).
 $item[2] = new \Stidner\Model\Order\Item();
 $item[2]->setType('physical')
-    ->setArtno('654321')
+    ->setArtno('220333')
     ->setSku('5205-250SE')
     ->setName('Golden shoes')
     ->setDescription('These shoes are made of gold')
@@ -80,9 +78,7 @@ $item[2]->setType('physical')
     ->setQuantityUnit('pcs')
     ->setUnitPrice(105000)
     ->setTaxRate(2500)
-    ->setTotalPriceExcludingTax(105000)
-    ->setTotalPriceIncludingTax(131250)
-    ->setTotalTaxAmount(26250)
+    ->calculateItemPrice()
     ->setImageUrl('https://example.com/goldshoes.jpg');
 
 
@@ -94,13 +90,13 @@ $order->setMerchantReference1(null)
     ->setPurchaseCountry('SE')
     ->setPurchaseCurrency('SEK')
     ->setLocale('sv_se')
-    ->setTotalPriceExcludingTax(171000)
-    ->setTotalPriceIncludingTax(213750)
-    ->setTotalTaxAmount(42750)
     ->setBillingAddress($billingAddress)// Don't forget to add all the objects!
     ->addItem($item[1])
     ->addItem($item[2])
+    ->calculateTotalPrices()
     ->setMerchantUrls($merchant)
+    ->setFreeShipping(true)
+    ->setShipmentCountries(['DK', 'SE'])
     ->setOptions($options);
 
 
@@ -108,6 +104,7 @@ $order->setMerchantReference1(null)
 try {
     $request = $api_handle->createOrder($order);
     $iframeUrl = $request->getIframeUrl();
+    var_dump($request->getUpdatedDate());
     echo "<iframe src='$iframeUrl' width='75%' height='75%'></iframe>";
 } catch (\Stidner\ApiException $e) {
     echo $e;
