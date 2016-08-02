@@ -20,7 +20,8 @@ namespace Stidner\Model\Order;
 /**
  * Class Item.
  */
-class Item {
+class Item
+{
     /**
      * @var int
      */
@@ -94,7 +95,8 @@ class Item {
     /**
      * @return string
      */
-    public function getType() {
+    public function getType()
+    {
         return $this->type;
     }
 
@@ -103,7 +105,8 @@ class Item {
      *
      * @return $this
      */
-    public function setType($type) {
+    public function setType($type)
+    {
         $this->type = $type;
 
         return $this;
@@ -112,7 +115,8 @@ class Item {
     /**
      * @return string
      */
-    public function getArtno() {
+    public function getArtno()
+    {
         return $this->artno;
     }
 
@@ -121,7 +125,8 @@ class Item {
      *
      * @return $this
      */
-    public function setArtno($artno) {
+    public function setArtno($artno)
+    {
         $this->artno = $artno;
 
         return $this;
@@ -130,7 +135,8 @@ class Item {
     /**
      * @return string
      */
-    public function getSku() {
+    public function getSku()
+    {
         return $this->sku;
     }
 
@@ -139,7 +145,8 @@ class Item {
      *
      * @return $this
      */
-    public function setSku($sku) {
+    public function setSku($sku)
+    {
         $this->sku = $sku;
 
         return $this;
@@ -148,7 +155,8 @@ class Item {
     /**
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -157,7 +165,8 @@ class Item {
      *
      * @return $this
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
 
         return $this;
@@ -166,7 +175,8 @@ class Item {
     /**
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
@@ -175,7 +185,8 @@ class Item {
      *
      * @return $this
      */
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
 
         return $this;
@@ -184,7 +195,8 @@ class Item {
     /**
      * @return int
      */
-    public function getWeight() {
+    public function getWeight()
+    {
         return $this->weight;
     }
 
@@ -193,7 +205,8 @@ class Item {
      *
      * @return $this
      */
-    public function setWeight($weight) {
+    public function setWeight($weight)
+    {
         $this->weight = $weight;
 
         return $this;
@@ -202,7 +215,8 @@ class Item {
     /**
      * @return int
      */
-    public function getQuantity() {
+    public function getQuantity()
+    {
         return $this->quantity;
     }
 
@@ -211,7 +225,8 @@ class Item {
      *
      * @return $this
      */
-    public function setQuantity($quantity) {
+    public function setQuantity($quantity)
+    {
         $this->quantity = $quantity;
 
         return $this;
@@ -220,7 +235,8 @@ class Item {
     /**
      * @return string
      */
-    public function getQuantityUnit() {
+    public function getQuantityUnit()
+    {
         return $this->quantityUnit;
     }
 
@@ -229,7 +245,8 @@ class Item {
      *
      * @return $this
      */
-    public function setQuantityUnit($quantityUnit) {
+    public function setQuantityUnit($quantityUnit)
+    {
         $this->quantityUnit = $quantityUnit;
 
         return $this;
@@ -238,7 +255,8 @@ class Item {
     /**
      * @return int
      */
-    public function getUnitPrice() {
+    public function getUnitPrice()
+    {
         return $this->unitPrice;
     }
 
@@ -247,7 +265,8 @@ class Item {
      *
      * @return $this
      */
-    public function setUnitPrice($unitPrice) {
+    public function setUnitPrice($unitPrice)
+    {
         $this->unitPrice = $unitPrice;
 
         return $this;
@@ -256,7 +275,8 @@ class Item {
     /**
      * @return int
      */
-    public function getTaxRate() {
+    public function getTaxRate()
+    {
         return $this->taxRate;
     }
 
@@ -265,7 +285,8 @@ class Item {
      *
      * @return $this
      */
-    public function setTaxRate($taxRate) {
+    public function setTaxRate($taxRate)
+    {
         $this->taxRate = $taxRate;
 
         return $this;
@@ -274,7 +295,8 @@ class Item {
     /**
      * @return string
      */
-    public function getImageUrl() {
+    public function getImageUrl()
+    {
         return $this->imageUrl;
     }
 
@@ -283,7 +305,8 @@ class Item {
      *
      * @return $this
      */
-    public function setImageUrl($imageUrl) {
+    public function setImageUrl($imageUrl)
+    {
         $this->imageUrl = $imageUrl;
 
         return $this;
@@ -292,7 +315,8 @@ class Item {
     /**
      * @return int
      */
-    public function getTotalPriceExcludingTax() {
+    public function getTotalPriceExcludingTax()
+    {
         return $this->totalPriceExcludingTax;
     }
 
@@ -301,7 +325,8 @@ class Item {
      *
      * @return $this
      */
-    public function setTotalPriceExcludingTax($totalPriceExcludingTax) {
+    public function setTotalPriceExcludingTax($totalPriceExcludingTax)
+    {
         $this->totalPriceExcludingTax = $totalPriceExcludingTax;
 
         return $this;
@@ -310,7 +335,8 @@ class Item {
     /**
      * @return int
      */
-    public function getTotalTaxAmount() {
+    public function getTotalTaxAmount()
+    {
         return $this->totalTaxAmount;
     }
 
@@ -319,7 +345,8 @@ class Item {
      *
      * @return $this
      */
-    public function setTotalTaxAmount($totalTaxAmount) {
+    public function setTotalTaxAmount($totalTaxAmount)
+    {
         $this->totalTaxAmount = $totalTaxAmount;
 
         return $this;
@@ -328,7 +355,8 @@ class Item {
     /**
      * @return int
      */
-    public function getTotalPriceIncludingTax() {
+    public function getTotalPriceIncludingTax()
+    {
         return $this->totalPriceIncludingTax;
     }
 
@@ -337,7 +365,8 @@ class Item {
      *
      * @return $this
      */
-    public function setTotalPriceIncludingTax($totalPriceIncludingTax) {
+    public function setTotalPriceIncludingTax($totalPriceIncludingTax)
+    {
         $this->totalPriceIncludingTax = $totalPriceIncludingTax;
 
         return $this;
@@ -349,7 +378,8 @@ class Item {
      *
      * unitPrice, quantity, and taxRate must be set prior to using function.
      */
-    public function calculateItemPrice() {
+    public function calculateItemPrice()
+    {
         if (!isset($this->unitPrice, $this->quantity, $this->taxRate)) {
             die('ERROR: unitPrice, quantity, or taxRate was not set before calling calculateTotalPrices().');
         }

@@ -19,7 +19,8 @@ namespace Stidner\Interfaces;
 /**
  * Interface FromObjectMarshaller.
  */
-interface FromObjectMarshaller {
+interface FromObjectMarshaller
+{
     /**
      * @param $object
      *

@@ -21,13 +21,15 @@ use Stidner\Interfaces\ToArrayInterface;
 /**
  * Class AddressMarshaller.
  */
-class AddressMarshaller implements ToArrayInterface {
+class AddressMarshaller implements ToArrayInterface
+{
     /**
      * @param $object
      *
      * @return array
      */
-    public function toArray($object) {
+    public function toArray($object)
+    {
         /*
          * @var Address $object
          */

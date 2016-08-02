@@ -19,5 +19,6 @@ namespace Stidner;
 /**
  * Class ApiException.
  */
-class ApiException extends \Exception {
+class ApiException extends \Exception
+{
 }

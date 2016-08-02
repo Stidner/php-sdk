@@ -25,7 +25,8 @@ use Stidner\Model\Order;
 /**
  * Class to make using the Stidner Order API easier.
  */
-class Api {
+class Api
+{
     /**
      * @var string The hostname of Stidner's API. Defaults to 'api.stidner.com'.
      */
@@ -58,7 +59,8 @@ class Api {
      * @param string $password Your API-key for the Stidner API.
      * @param string $apiHost The hostname of Stidner's API. Defaults to 'api.stidner.com'.
      */
-    public function __construct($username, $password, $apiHost = 'api.stidner.com') {
+    public function __construct($username, $password, $apiHost = 'api.stidner.com')
+    {
         $this->username = $username;
         $this->password = $password;
         $this->apiHost = $apiHost;
@@ -76,7 +78,8 @@ class Api {
      *
      * @return Order
      */
-    public function createOrder(Order $order) {
+    public function createOrder(Order $order)
+    {
         $orderData = $this->orderMarshaller->toArray($order);
         $response = null;
 
@@ -104,7 +107,8 @@ class Api {
      *
      * @return string a base64-encoded string.
      */
-    protected function encodeCredentials() {
+    protected function encodeCredentials()
+    {
         return 'Basic ' . base64_encode($this->username . ':' . $this->password);
     }
 
@@ -120,7 +124,8 @@ class Api {
      *
      * @return Order
      */
-    public function getOrder($orderID) {
+    public function getOrder($orderID)
+    {
         $response = null;
 
         try {

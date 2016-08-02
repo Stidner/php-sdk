@@ -21,13 +21,15 @@ use Stidner\Interfaces\ToArrayInterface;
 /**
  * Class MerchantMarshaller.
  */
-class MerchantMarshaller implements ToArrayInterface {
+class MerchantMarshaller implements ToArrayInterface
+{
     /**
      * @param $object
      *
      * @return array
      */
-    public function toArray($object) {
+    public function toArray($object)
+    {
         /*
          * @var Merchant $object
          */

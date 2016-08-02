@@ -26,13 +26,15 @@ use Stidner\Model\Order;
  *
  * Marshalls the SDK's php arrays -> json object.
  */
-class OrderMarshaller implements ToArrayInterface {
+class OrderMarshaller implements ToArrayInterface
+{
     /**
      * @param Order $object
      *
      * @return array
      */
-    public function toArray($object) {
+    public function toArray($object)
+    {
         $merchantMarshaller = new MerchantMarshaller();
         $optionsMarshaller = new OptionsMarshaller();
         $itemMarshaller = new ItemMarshaller();

@@ -19,7 +19,8 @@ namespace Stidner\Model;
 /**
  * Class Address.
  */
-class Address {
+class Address
+{
     /**
      * @var string
      */
@@ -88,7 +89,8 @@ class Address {
     /**
      * @return string
      */
-    public function getBusinessName() {
+    public function getBusinessName()
+    {
         return $this->businessName;
     }
 
@@ -97,7 +99,8 @@ class Address {
      *
      * @return $this
      */
-    public function setBusinessName($businessName) {
+    public function setBusinessName($businessName)
+    {
         $this->businessName = $businessName;
 
         return $this;
@@ -106,7 +109,8 @@ class Address {
     /**
      * @return string
      */
-    public function getFirstName() {
+    public function getFirstName()
+    {
         return $this->firstName;
     }
 
@@ -115,7 +119,8 @@ class Address {
      *
      * @return $this
      */
-    public function setFirstName($firstName) {
+    public function setFirstName($firstName)
+    {
         $this->firstName = $firstName;
 
         return $this;
@@ -124,7 +129,8 @@ class Address {
     /**
      * @return string
      */
-    public function getFamilyName() {
+    public function getFamilyName()
+    {
         return $this->familyName;
     }
 
@@ -133,7 +139,8 @@ class Address {
      *
      * @return $this
      */
-    public function setFamilyName($familyName) {
+    public function setFamilyName($familyName)
+    {
         $this->familyName = $familyName;
 
         return $this;
@@ -142,7 +149,8 @@ class Address {
     /**
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
@@ -151,7 +159,8 @@ class Address {
      *
      * @return $this
      */
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
 
         return $this;
@@ -160,7 +169,8 @@ class Address {
     /**
      * @return string
      */
-    public function getAddressLine() {
+    public function getAddressLine()
+    {
         return $this->addressLine;
     }
 
@@ -169,7 +179,8 @@ class Address {
      *
      * @return $this
      */
-    public function setAddressLine($addressLine) {
+    public function setAddressLine($addressLine)
+    {
         $this->addressLine = $addressLine;
 
         return $this;
@@ -178,7 +189,8 @@ class Address {
     /**
      * @return string
      */
-    public function getAddressLine2() {
+    public function getAddressLine2()
+    {
         return $this->addressLine2;
     }
 
@@ -187,7 +199,8 @@ class Address {
      *
      * @return $this
      */
-    public function setAddressLine2($addressLine2) {
+    public function setAddressLine2($addressLine2)
+    {
         $this->addressLine2 = $addressLine2;
 
         return $this;
@@ -196,7 +209,8 @@ class Address {
     /**
      * @return string
      */
-    public function getPostalCode() {
+    public function getPostalCode()
+    {
         return $this->postalCode;
     }
 
@@ -205,7 +219,8 @@ class Address {
      *
      * @return $this
      */
-    public function setPostalCode($postalCode) {
+    public function setPostalCode($postalCode)
+    {
         $this->postalCode = $postalCode;
 
         return $this;
@@ -214,7 +229,8 @@ class Address {
     /**
      * @return string
      */
-    public function getRegion() {
+    public function getRegion()
+    {
         return $this->region;
     }
 
@@ -223,7 +239,8 @@ class Address {
      *
      * @return $this
      */
-    public function setRegion($region) {
+    public function setRegion($region)
+    {
         $this->region = $region;
 
         return $this;
@@ -232,7 +249,8 @@ class Address {
     /**
      * @return string
      */
-    public function getCity() {
+    public function getCity()
+    {
         return $this->city;
     }
 
@@ -241,7 +259,8 @@ class Address {
      *
      * @return $this
      */
-    public function setCity($city) {
+    public function setCity($city)
+    {
         $this->city = $city;
 
         return $this;
@@ -250,7 +269,8 @@ class Address {
     /**
      * @return string
      */
-    public function getPhone() {
+    public function getPhone()
+    {
         return $this->phone;
     }
 
@@ -259,7 +279,8 @@ class Address {
      *
      * @return $this
      */
-    public function setPhone($phone) {
+    public function setPhone($phone)
+    {
         $this->phone = $phone;
 
         return $this;
@@ -268,7 +289,8 @@ class Address {
     /**
      * @return string
      */
-    public function getCountryCode() {
+    public function getCountryCode()
+    {
         return $this->country;
     }
 
@@ -277,7 +299,8 @@ class Address {
      *
      * @return $this
      */
-    public function setCountryCode($country) {
+    public function setCountryCode($country)
+    {
         $this->country = $country;
 
         return $this;
@@ -286,7 +309,8 @@ class Address {
     /**
      * @return string
      */
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
@@ -295,7 +319,8 @@ class Address {
      *
      * @return $this
      */
-    public function setEmail($email) {
+    public function setEmail($email)
+    {
         $this->email = $email;
 
         return $this;
@@ -304,7 +329,8 @@ class Address {
     /**
      * @return string
      */
-    public function getType() {
+    public function getType()
+    {
         return $this->type;
     }
 
@@ -313,7 +339,8 @@ class Address {
      *
      * @return $this
      */
-    public function setType($type) {
+    public function setType($type)
+    {
         $this->type = $type;
 
         return $this;

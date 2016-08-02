@@ -21,13 +21,15 @@ use Stidner\Interfaces\ToArrayInterface;
 /**
  * Class OptionsMarshaller.
  */
-class OptionsMarshaller implements ToArrayInterface {
+class OptionsMarshaller implements ToArrayInterface
+{
     /**
      * @param $object
      *
      * @return array
      */
-    public function toArray($object) {
+    public function toArray($object)
+    {
         /*
          * @var Options $object
          */

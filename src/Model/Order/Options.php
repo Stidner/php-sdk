@@ -19,7 +19,8 @@ namespace Stidner\Model\Order;
 /**
  * Class Options.
  */
-class Options {
+class Options
+{
     /**
      * @var string
      */
@@ -58,7 +59,8 @@ class Options {
     /**
      * @return string
      */
-    public function getColorButton() {
+    public function getColorButton()
+    {
         return $this->colorButton;
     }
 
@@ -67,7 +69,8 @@ class Options {
      *
      * @return $this
      */
-    public function setColorButton($colorButton) {
+    public function setColorButton($colorButton)
+    {
         $this->colorButton = $colorButton;
 
         return $this;
@@ -76,7 +79,8 @@ class Options {
     /**
      * @return string
      */
-    public function getColorButtonText() {
+    public function getColorButtonText()
+    {
         return $this->colorButtonText;
     }
 
@@ -85,7 +89,8 @@ class Options {
      *
      * @return $this
      */
-    public function setColorButtonText($colorButtonText) {
+    public function setColorButtonText($colorButtonText)
+    {
         $this->colorButtonText = $colorButtonText;
 
         return $this;
@@ -94,7 +99,8 @@ class Options {
     /**
      * @return string
      */
-    public function getColorCheckbox() {
+    public function getColorCheckbox()
+    {
         return $this->colorCheckbox;
     }
 
@@ -103,7 +109,8 @@ class Options {
      *
      * @return $this
      */
-    public function setColorCheckbox($colorCheckbox) {
+    public function setColorCheckbox($colorCheckbox)
+    {
         $this->colorCheckbox = $colorCheckbox;
 
         return $this;
@@ -112,7 +119,8 @@ class Options {
     /**
      * @return string
      */
-    public function getColorCheckboxCheckmarks() {
+    public function getColorCheckboxCheckmarks()
+    {
         return $this->colorCheckboxCheckmarks;
     }
 
@@ -121,7 +129,8 @@ class Options {
      *
      * @return $this
      */
-    public function setColorCheckboxCheckmarks($colorCheckboxCheckmarks) {
+    public function setColorCheckboxCheckmarks($colorCheckboxCheckmarks)
+    {
         $this->colorCheckboxCheckmarks = $colorCheckboxCheckmarks;
 
         return $this;
@@ -130,7 +139,8 @@ class Options {
     /**
      * @return string
      */
-    public function getColorHeader() {
+    public function getColorHeader()
+    {
         return $this->colorHeader;
     }
 
@@ -139,7 +149,8 @@ class Options {
      *
      * @return $this
      */
-    public function setColorHeader($colorHeader) {
+    public function setColorHeader($colorHeader)
+    {
         $this->colorHeader = $colorHeader;
 
         return $this;
@@ -148,7 +159,8 @@ class Options {
     /**
      * @return string
      */
-    public function getColorLink() {
+    public function getColorLink()
+    {
         return $this->colorLink;
     }
 
@@ -157,7 +169,8 @@ class Options {
      *
      * @return $this
      */
-    public function setColorLink($colorLink) {
+    public function setColorLink($colorLink)
+    {
         $this->colorLink = $colorLink;
 
         return $this;
@@ -166,7 +179,8 @@ class Options {
     /**
      * @return string
      */
-    public function getColorBackground() {
+    public function getColorBackground()
+    {
         return $this->colorBackground;
     }
 
@@ -175,7 +189,8 @@ class Options {
      *
      * @return $this
      */
-    public function setColorBackground($colorBackground) {
+    public function setColorBackground($colorBackground)
+    {
         $this->colorBackground = $colorBackground;
 
         return $this;

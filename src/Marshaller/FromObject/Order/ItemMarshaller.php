@@ -22,13 +22,15 @@ use Stidner\Model\Order\Item;
 /**
  * Class ItemMarshaller.
  */
-class ItemMarshaller extends AbstractFromObjectMarshaller {
+class ItemMarshaller extends AbstractFromObjectMarshaller
+{
     /**
      * @param $object
      *
      * @return Item
      */
-    public function createFromObject($object) {
+    public function createFromObject($object)
+    {
         $address = new Item();
 
         $this->copyProperties($address, $object);

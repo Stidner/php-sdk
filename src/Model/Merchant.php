@@ -19,7 +19,8 @@ namespace Stidner\Model;
 /**
  * Class Merchant.
  */
-class Merchant {
+class Merchant
+{
     /**
      * @var string
      */
@@ -48,7 +49,8 @@ class Merchant {
     /**
      * @return string
      */
-    public function getTerms() {
+    public function getTerms()
+    {
         return $this->terms;
     }
 
@@ -57,7 +59,8 @@ class Merchant {
      *
      * @return $this
      */
-    public function setTerms($terms) {
+    public function setTerms($terms)
+    {
         $this->terms = $terms;
 
         return $this;
@@ -66,7 +69,8 @@ class Merchant {
     /**
      * @return string
      */
-    public function getCheckout() {
+    public function getCheckout()
+    {
         return $this->checkout;
     }
 
@@ -75,7 +79,8 @@ class Merchant {
      *
      * @return $this
      */
-    public function setCheckout($checkout) {
+    public function setCheckout($checkout)
+    {
         $this->checkout = $checkout;
 
         return $this;
@@ -84,7 +89,8 @@ class Merchant {
     /**
      * @return string
      */
-    public function getConfirmation() {
+    public function getConfirmation()
+    {
         return $this->confirmation;
     }
 
@@ -93,7 +99,8 @@ class Merchant {
      *
      * @return $this
      */
-    public function setConfirmation($confirmation) {
+    public function setConfirmation($confirmation)
+    {
         $this->confirmation = $confirmation;
 
         return $this;
@@ -102,7 +109,8 @@ class Merchant {
     /**
      * @return string
      */
-    public function getPush() {
+    public function getPush()
+    {
         return $this->push;
     }
 
@@ -111,7 +119,8 @@ class Merchant {
      *
      * @return $this
      */
-    public function setPush($push) {
+    public function setPush($push)
+    {
         $this->push = $push;
 
         return $this;
@@ -120,7 +129,8 @@ class Merchant {
     /**
      * @return string
      */
-    public function getDiscount() {
+    public function getDiscount()
+    {
         return $this->discount;
     }
 
@@ -129,7 +139,8 @@ class Merchant {
      *
      * @return $this
      */
-    public function setDiscount($discount) {
+    public function setDiscount($discount)
+    {
         $this->discount = $discount;
 
         return $this;

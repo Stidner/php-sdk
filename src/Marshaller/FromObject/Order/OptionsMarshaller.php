@@ -22,13 +22,15 @@ use Stidner\Model\Order\Options;
 /**
  * Class OptionsMarshaller.
  */
-class OptionsMarshaller extends AbstractFromObjectMarshaller {
+class OptionsMarshaller extends AbstractFromObjectMarshaller
+{
     /**
      * @param $object
      *
      * @return Options
      */
-    public function createFromObject($object) {
+    public function createFromObject($object)
+    {
         $address = new Options();
 
         $this->copyProperties($address, $object);
@@ -40,7 +42,8 @@ class OptionsMarshaller extends AbstractFromObjectMarshaller {
      * @param $destinationClass
      * @param $object
      */
-    protected function copyProperties($destinationClass, $object) {
+    protected function copyProperties($destinationClass, $object)
+    {
         foreach ($object as $name => $value) {
             $methodName = 'set' . $this->camelize($name);
 

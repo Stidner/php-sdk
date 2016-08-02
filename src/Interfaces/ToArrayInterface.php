@@ -19,7 +19,8 @@ namespace Stidner\Interfaces;
 /**
  * Interface ToArrayInterface.
  */
-interface ToArrayInterface {
+interface ToArrayInterface
+{
     /**
      * @param $object
      *

@@ -21,13 +21,15 @@ use Stidner\Model\Address;
 /**
  * Class AddressMarshaller.
  */
-class AddressMarshaller extends AbstractFromObjectMarshaller {
+class AddressMarshaller extends AbstractFromObjectMarshaller
+{
     /**
      * @param $object
      *
      * @return Address
      */
-    public function createFromObject($object) {
+    public function createFromObject($object)
+    {
         $address = new Address();
 
         $this->copyProperties($address, $object);
