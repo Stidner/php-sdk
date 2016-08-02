@@ -379,7 +379,7 @@ class Order {
     }
 
     /**
-     * @param boolean $freeShipping
+     * @param bool $freeShipping
      *
      * @return $this
      */
@@ -534,24 +534,6 @@ class Order {
     }
 
     /**
-     * @return Order\Item[]
-     */
-    public function getItems() {
-        return $this->items;
-    }
-
-    /**
-     * @param Order\Item[] $items
-     *
-     * @return $this
-     */
-    public function setItems($items) {
-        $this->items = $items;
-
-        return $this;
-    }
-
-    /**
      * @param Order\Item $item
      *
      * @return $this
@@ -626,11 +608,29 @@ class Order {
         $this->totalTaxAmount = 0;
         $this->totalPriceIncludingTax = 0;
 
-        foreach($this->getItems() as $key) {
+        foreach ($this->getItems() as $key) {
             $this->totalPriceExcludingTax += ($key->getTotalPriceExcludingTax() * $key->getQuantity());
             $this->totalTaxAmount += ($key->getTaxRate() * $key->getTotalPriceExcludingTax() / 10000);
         }
         $this->totalPriceIncludingTax = ($this->totalPriceExcludingTax + $this->totalTaxAmount);
+
+        return $this;
+    }
+
+    /**
+     * @return Order\Item[]
+     */
+    public function getItems() {
+        return $this->items;
+    }
+
+    /**
+     * @param Order\Item[] $items
+     *
+     * @return $this
+     */
+    public function setItems($items) {
+        $this->items = $items;
 
         return $this;
     }
