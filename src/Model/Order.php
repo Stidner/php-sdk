@@ -99,7 +99,7 @@ class Order {
     protected $comment;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $freeShipping;
 
@@ -384,8 +384,7 @@ class Order {
      * @return $this
      */
     public function setFreeShipping($freeShipping) {
-        $this->freeShipping = (bool)$freeShipping;
-
+        $this->freeShipping = (bool) $freeShipping;
         return $this;
     }
 
