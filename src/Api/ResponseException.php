@@ -29,10 +29,10 @@ class ResponseException extends \Exception
     /**
      * ResponseException constructor.
      *
-     * @param string $message
-     * @param int $code
+     * @param string          $message
+     * @param int             $code
      * @param \Exception|null $previous
-     * @param array $messages
+     * @param array           $messages
      */
     public function __construct($message = '', $code = 0, \Exception $previous = null, $messages = [])
     {

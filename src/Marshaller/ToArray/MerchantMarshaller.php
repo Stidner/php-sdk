@@ -34,13 +34,13 @@ class MerchantMarshaller implements ToArrayInterface
          * @var Merchant $object
          */
         $data = [
-            'terms' => $object->getTerms(),
-            'checkout' => $object->getCheckout(),
+            'terms'        => $object->getTerms(),
+            'checkout'     => $object->getCheckout(),
             'confirmation' => $object->getConfirmation(),
         ];
 
         $optionalParameters = [
-            'push' => 'getPush',
+            'push'     => 'getPush',
             'discount' => 'getDiscount',
         ];
 

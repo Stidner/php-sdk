@@ -45,7 +45,7 @@ class OptionsMarshaller extends AbstractFromObjectMarshaller
     protected function copyProperties($destinationClass, $object)
     {
         foreach ($object as $name => $value) {
-            $methodName = 'set' . $this->camelize($name);
+            $methodName = 'set'.$this->camelize($name);
 
             if (method_exists($destinationClass, $methodName)) {
                 $destinationClass->$methodName($value);
