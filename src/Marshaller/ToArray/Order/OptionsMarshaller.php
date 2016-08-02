@@ -36,13 +36,13 @@ class OptionsMarshaller implements ToArrayInterface
         $data = [];
 
         $optionalParameters = [
-            'color_button' => 'getColorButton',
-            'color_button_text' => 'getColorButtonText',
-            'color_checkbox' => 'getColorCheckbox',
+            'color_button'              => 'getColorButton',
+            'color_button_text'         => 'getColorButtonText',
+            'color_checkbox'            => 'getColorCheckbox',
             'color_checkbox_checkmarks' => 'getColorCheckboxCheckmarks',
-            'color_header' => 'getColorHeader',
-            'color_link' => 'getColorLink',
-            'color_background' => 'getColorBackground',
+            'color_header'              => 'getColorHeader',
+            'color_link'                => 'getColorLink',
+            'color_background'          => 'getColorBackground',
         ];
 
         foreach ($optionalParameters as $key => $value) {

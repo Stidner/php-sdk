@@ -16,7 +16,6 @@
  */
 namespace Stidner\Model\Order;
 
-
 /**
  * Class Item.
  */
@@ -371,7 +370,6 @@ class Item
 
         return $this;
     }
-
 
     /**
      * @return $this Returns price values for item.

@@ -79,7 +79,7 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
     protected function copyProperties($destinationClass, $object)
     {
         foreach (get_object_vars($object) as $name => $value) {
-            $methodName = 'set' . $this->camelize($name);
+            $methodName = 'set'.$this->camelize($name);
 
             switch ($name) {
                 case 'billing_address':

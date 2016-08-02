@@ -412,7 +412,8 @@ class Order
      */
     public function setFreeShipping($freeShipping)
     {
-        $this->freeShipping = (bool)$freeShipping;
+        $this->freeShipping = (bool) $freeShipping;
+
         return $this;
     }
 

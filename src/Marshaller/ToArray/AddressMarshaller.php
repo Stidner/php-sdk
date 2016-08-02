@@ -34,13 +34,13 @@ class AddressMarshaller implements ToArrayInterface
          * @var Address $object
          */
         $data = [
-            'type' => $object->getType(),
+            'type'        => $object->getType(),
             'addressLine' => $object->getAddressLine(),
-            'postalCode' => $object->getPostalCode(),
-            'city' => $object->getCity(),
-            'region' => $object->getRegion(),
-            'phone' => $object->getPhone(),
-            'email' => $object->getEmail(),
+            'postalCode'  => $object->getPostalCode(),
+            'city'        => $object->getCity(),
+            'region'      => $object->getRegion(),
+            'phone'       => $object->getPhone(),
+            'email'       => $object->getEmail(),
             'countryCode' => $object->getCountryCode(),
         ];
 
@@ -52,7 +52,7 @@ class AddressMarshaller implements ToArrayInterface
         }
 
         $optionalParameters = [
-            'title' => 'getTitle',
+            'title'        => 'getTitle',
             'addressLine2' => 'getAddressLine2',
         ];
 

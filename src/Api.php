@@ -55,9 +55,9 @@ class Api
     /**
      * Api constructor.
      *
-     * @param int $username Your user-ID for the Stidner API.
+     * @param int    $username Your user-ID for the Stidner API.
      * @param string $password Your API-key for the Stidner API.
-     * @param string $apiHost The hostname of Stidner's API. Defaults to 'api.stidner.com'.
+     * @param string $apiHost  The hostname of Stidner's API. Defaults to 'api.stidner.com'.
      */
     public function __construct($username, $password, $apiHost = 'api.stidner.com')
     {
@@ -84,7 +84,7 @@ class Api
         $response = null;
 
         try {
-            $response = Request::post('https://' . $this->apiHost . '/v1/order', $orderData)
+            $response = Request::post('https://'.$this->apiHost.'/v1/order', $orderData)
                 ->addHeader('Authorization', $this->encodeCredentials())
                 ->sendsJson()->send();
         } catch (\Exception $e) {
@@ -92,7 +92,7 @@ class Api
         }
 
         if ($response->content_type !== 'application/json') {
-            throw new ApiException('Received wrong content_type response: ' . $response->content_type);
+            throw new ApiException('Received wrong content_type response: '.$response->content_type);
         }
 
         if ($response->code !== 200) {
@@ -109,7 +109,7 @@ class Api
      */
     protected function encodeCredentials()
     {
-        return 'Basic ' . base64_encode($this->username . ':' . $this->password);
+        return 'Basic '.base64_encode($this->username.':'.$this->password);
     }
 
     /**
@@ -129,7 +129,7 @@ class Api
         $response = null;
 
         try {
-            $response = Request::get('https://' . $this->apiHost . '/v1/order/' . $orderID)
+            $response = Request::get('https://'.$this->apiHost.'/v1/order/'.$orderID)
                 ->addHeader('Authorization', $this->encodeCredentials())
                 ->send();
         } catch (\Exception $e) {
@@ -137,7 +137,7 @@ class Api
         }
 
         if ($response->content_type !== 'application/json') {
-            throw new ApiException('Received wrong content_type response: ' . $response->content_type);
+            throw new ApiException('Received wrong content_type response: '.$response->content_type);
         }
 
         if ($response->code !== 200) {
