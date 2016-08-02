@@ -27,8 +27,7 @@ use Stidner\Model\Order;
  *
  * @package Stidner\Marshaller\FromObject
  */
-class OrderMarshaller extends AbstractFromObjectMarshaller
-{
+class OrderMarshaller extends AbstractFromObjectMarshaller {
     /**
      * @var AddressMarshaller
      */
@@ -52,8 +51,7 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
     /**
      * OrderMarshaller constructor.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->addressMarshaller = new AddressMarshaller();
         $this->merchantMarshaller = new MerchantMarshaller();
         $this->itemMarshaller = new ItemMarshaller();
@@ -65,8 +63,7 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
      *
      * @return Order
      */
-    public function createFromObject($object)
-    {
+    public function createFromObject($object) {
         $order = new Order();
 
         $this->copyProperties($order, $object);
@@ -78,10 +75,9 @@ class OrderMarshaller extends AbstractFromObjectMarshaller
      * @param $destinationClass
      * @param $object
      */
-    protected function copyProperties($destinationClass, $object)
-    {
+    protected function copyProperties($destinationClass, $object) {
         foreach (get_object_vars($object) as $name => $value) {
-            $methodName = 'set'.$this->camelize($name);
+            $methodName = 'set' . $this->camelize($name);
 
             switch ($name) {
                 case 'billing_address':

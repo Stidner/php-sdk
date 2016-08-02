@@ -21,15 +21,13 @@ use Stidner\Model\Merchant;
 /**
  * Class MerchantMarshaller.
  */
-class MerchantMarshaller extends AbstractFromObjectMarshaller
-{
+class MerchantMarshaller extends AbstractFromObjectMarshaller {
     /**
      * @param $object
      *
      * @return Merchant
      */
-    public function createFromObject($object)
-    {
+    public function createFromObject($object) {
         $address = new Merchant();
 
         $this->copyProperties($address, $object);

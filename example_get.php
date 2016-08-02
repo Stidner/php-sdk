@@ -16,7 +16,7 @@ $api_handle = new \Stidner\Api(USER_ID_NUMBER, 'API_KEY');
 
 // And send it off; remember to properly handle any unlikely exceptions!
 try {
-    $request = $api_handle->getOrder('ORDER_ID');
+    $request = $api_handle->getOrder('ORDER_REFERENCE_ID');
     $orderStatus = $request->getStatus();
 
     switch ($orderStatus) {

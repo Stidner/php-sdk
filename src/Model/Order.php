@@ -17,14 +17,25 @@
 namespace Stidner\Model;
 
 use Stidner\Model\Order\Options;
-use Stidner\Traits\PriceTrait;
 
 /**
  * Class Order.
  */
-class Order
-{
-    use PriceTrait;
+class Order {
+    /**
+     * @var int
+     */
+    protected $totalPriceExcludingTax;
+
+    /**
+     * @var int
+     */
+    protected $totalTaxAmount;
+
+    /**
+     * @var int
+     */
+    protected $totalPriceIncludingTax;
 
     /**
      * @var string
@@ -140,16 +151,14 @@ class Order
     /**
      * Create constructor.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->options = new Options();
     }
 
     /**
      * @return string
      */
-    public function getOrderId()
-    {
+    public function getOrderId() {
         return $this->orderId;
     }
 
@@ -158,8 +167,7 @@ class Order
      *
      * @return $this
      */
-    public function setOrderId($orderId)
-    {
+    public function setOrderId($orderId) {
         $this->orderId = $orderId;
 
         return $this;
@@ -168,8 +176,7 @@ class Order
     /**
      * @return string
      */
-    public function getIframeUrl()
-    {
+    public function getIframeUrl() {
         return $this->iframeUrl;
     }
 
@@ -178,8 +185,7 @@ class Order
      *
      * @return $this
      */
-    public function setIframeUrl($iframeUrl)
-    {
+    public function setIframeUrl($iframeUrl) {
         $this->iframeUrl = $iframeUrl;
 
         return $this;
@@ -188,8 +194,7 @@ class Order
     /**
      * @return string
      */
-    public function getPurchaseCountry()
-    {
+    public function getPurchaseCountry() {
         return $this->purchaseCountry;
     }
 
@@ -198,8 +203,7 @@ class Order
      *
      * @return $this
      */
-    public function setPurchaseCountry($purchaseCountry)
-    {
+    public function setPurchaseCountry($purchaseCountry) {
         $this->purchaseCountry = $purchaseCountry;
 
         return $this;
@@ -208,8 +212,7 @@ class Order
     /**
      * @return string
      */
-    public function getPurchaseCurrency()
-    {
+    public function getPurchaseCurrency() {
         return $this->purchaseCurrency;
     }
 
@@ -218,8 +221,7 @@ class Order
      *
      * @return $this
      */
-    public function setPurchaseCurrency($purchaseCurrency)
-    {
+    public function setPurchaseCurrency($purchaseCurrency) {
         $this->purchaseCurrency = $purchaseCurrency;
 
         return $this;
@@ -228,8 +230,7 @@ class Order
     /**
      * @return string
      */
-    public function getLocale()
-    {
+    public function getLocale() {
         return $this->locale;
     }
 
@@ -238,8 +239,7 @@ class Order
      *
      * @return $this
      */
-    public function setLocale($locale)
-    {
+    public function setLocale($locale) {
         $this->locale = $locale;
 
         return $this;
@@ -248,8 +248,7 @@ class Order
     /**
      * @return string Returns "purchase_incomplete" (default), "purchase_complete", or "purchase_refunded".
      */
-    public function getStatus()
-    {
+    public function getStatus() {
         return $this->status;
     }
 
@@ -258,18 +257,16 @@ class Order
      *
      * @return $this
      */
-    public function setStatus($status)
-    {
+    public function setStatus($status) {
         $this->status = $status;
 
         return $this;
     }
 
     /**
-     * @return string Returns "choosing_provider" (default), "pending", or "shipped".
+     * @return string Returns "no_shipping" (default), "pending", or "shipped".
      */
-    public function getShipmentStatus()
-    {
+    public function getShipmentStatus() {
         return $this->shipmentStatus;
     }
 
@@ -278,8 +275,7 @@ class Order
      *
      * @return $this
      */
-    public function setShipmentStatus($shipmentStatus)
-    {
+    public function setShipmentStatus($shipmentStatus) {
         $this->shipmentStatus = $shipmentStatus;
 
         return $this;
@@ -288,8 +284,7 @@ class Order
     /**
      * @return string
      */
-    public function getShipmentCarrier()
-    {
+    public function getShipmentCarrier() {
         return $this->shipmentCarrier;
     }
 
@@ -298,8 +293,7 @@ class Order
      *
      * @return $this
      */
-    public function setShipmentCarrier($shipmentCarrier)
-    {
+    public function setShipmentCarrier($shipmentCarrier) {
         $this->shipmentCarrier = $shipmentCarrier;
 
         return $this;
@@ -308,8 +302,7 @@ class Order
     /**
      * @return string
      */
-    public function getShipmentProduct()
-    {
+    public function getShipmentProduct() {
         return $this->shipmentProduct;
     }
 
@@ -318,8 +311,7 @@ class Order
      *
      * @return $this
      */
-    public function setShipmentProduct($shipmentProduct)
-    {
+    public function setShipmentProduct($shipmentProduct) {
         $this->shipmentProduct = $shipmentProduct;
 
         return $this;
@@ -328,8 +320,7 @@ class Order
     /**
      * @return Address
      */
-    public function getBillingAddress()
-    {
+    public function getBillingAddress() {
         return $this->billingAddress;
     }
 
@@ -338,8 +329,7 @@ class Order
      *
      * @return $this
      */
-    public function setBillingAddress($billingAddress)
-    {
+    public function setBillingAddress($billingAddress) {
         $this->billingAddress = $billingAddress;
 
         return $this;
@@ -348,8 +338,7 @@ class Order
     /**
      * @return Address
      */
-    public function getShippingAddress()
-    {
+    public function getShippingAddress() {
         return $this->shippingAddress;
     }
 
@@ -358,8 +347,7 @@ class Order
      *
      * @return $this
      */
-    public function setShippingAddress($shippingAddress)
-    {
+    public function setShippingAddress($shippingAddress) {
         $this->shippingAddress = $shippingAddress;
 
         return $this;
@@ -368,8 +356,7 @@ class Order
     /**
      * @return string
      */
-    public function getComment()
-    {
+    public function getComment() {
         return $this->comment;
     }
 
@@ -378,8 +365,7 @@ class Order
      *
      * @return $this
      */
-    public function setComment($comment)
-    {
+    public function setComment($comment) {
         $this->comment = $comment;
 
         return $this;
@@ -388,8 +374,7 @@ class Order
     /**
      * @return string
      */
-    public function getFreeShipping()
-    {
+    public function getFreeShipping() {
         return $this->freeShipping;
     }
 
@@ -398,8 +383,7 @@ class Order
      *
      * @return $this
      */
-    public function setFreeShipping($freeShipping)
-    {
+    public function setFreeShipping($freeShipping) {
         $this->freeShipping = (bool)$freeShipping;
 
         return $this;
@@ -408,8 +392,7 @@ class Order
     /**
      * @return Merchant
      */
-    public function getMerchantUrls()
-    {
+    public function getMerchantUrls() {
         return $this->merchantUrl;
     }
 
@@ -418,8 +401,7 @@ class Order
      *
      * @return $this
      */
-    public function setMerchantUrls($merchantUrl)
-    {
+    public function setMerchantUrls($merchantUrl) {
         $this->merchantUrl = $merchantUrl;
 
         return $this;
@@ -428,8 +410,7 @@ class Order
     /**
      * @return string
      */
-    public function getMerchantReference1()
-    {
+    public function getMerchantReference1() {
         return $this->merchantReference1;
     }
 
@@ -438,8 +419,7 @@ class Order
      *
      * @return $this
      */
-    public function setMerchantReference1($merchantReference1)
-    {
+    public function setMerchantReference1($merchantReference1) {
         $this->merchantReference1 = $merchantReference1;
 
         return $this;
@@ -448,8 +428,7 @@ class Order
     /**
      * @return string
      */
-    public function getMerchantReference2()
-    {
+    public function getMerchantReference2() {
         return $this->merchantReference2;
     }
 
@@ -458,8 +437,7 @@ class Order
      *
      * @return $this
      */
-    public function setMerchantReference2($merchantReference2)
-    {
+    public function setMerchantReference2($merchantReference2) {
         $this->merchantReference2 = $merchantReference2;
 
         return $this;
@@ -468,8 +446,7 @@ class Order
     /**
      * @return \DateTime
      */
-    public function getCreatedDate()
-    {
+    public function getCreatedDate() {
         return $this->createdDate;
     }
 
@@ -478,8 +455,7 @@ class Order
      *
      * @return $this
      */
-    public function setCreatedDate($createdDate)
-    {
+    public function setCreatedDate($createdDate) {
         $this->createdDate = $createdDate;
 
         return $this;
@@ -488,8 +464,7 @@ class Order
     /**
      * @return \DateTime
      */
-    public function getCompletedDate()
-    {
+    public function getCompletedDate() {
         return $this->completedDate;
     }
 
@@ -498,8 +473,7 @@ class Order
      *
      * @return $this
      */
-    public function setCompletedDate($completedDate)
-    {
+    public function setCompletedDate($completedDate) {
         $this->completedDate = $completedDate;
 
         return $this;
@@ -508,8 +482,7 @@ class Order
     /**
      * @return \DateTime
      */
-    public function getUpdatedDate()
-    {
+    public function getUpdatedDate() {
         return $this->updatedDate;
     }
 
@@ -518,8 +491,7 @@ class Order
      *
      * @return $this
      */
-    public function setUpdatedDate($updatedDate)
-    {
+    public function setUpdatedDate($updatedDate) {
         $this->updatedDate = $updatedDate;
 
         return $this;
@@ -528,8 +500,7 @@ class Order
     /**
      * @return array
      */
-    public function getShipmentCountries()
-    {
+    public function getShipmentCountries() {
         return $this->shipmentCountries;
     }
 
@@ -538,8 +509,7 @@ class Order
      *
      * @return $this
      */
-    public function setShipmentCountries($shipmentCountries)
-    {
+    public function setShipmentCountries($shipmentCountries) {
         $this->shipmentCountries = $shipmentCountries;
 
         return $this;
@@ -548,8 +518,7 @@ class Order
     /**
      * @return Options
      */
-    public function getOptions()
-    {
+    public function getOptions() {
         return $this->options;
     }
 
@@ -558,8 +527,7 @@ class Order
      *
      * @return $this
      */
-    public function setOptions($options)
-    {
+    public function setOptions($options) {
         $this->options = $options;
 
         return $this;
@@ -568,8 +536,7 @@ class Order
     /**
      * @return Order\Item[]
      */
-    public function getItems()
-    {
+    public function getItems() {
         return $this->items;
     }
 
@@ -578,8 +545,7 @@ class Order
      *
      * @return $this
      */
-    public function setItems($items)
-    {
+    public function setItems($items) {
         $this->items = $items;
 
         return $this;
@@ -590,9 +556,81 @@ class Order
      *
      * @return $this
      */
-    public function addItem(Order\Item $item)
-    {
+    public function addItem(Order\Item $item) {
         $this->items[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalPriceExcludingTax() {
+        return $this->totalPriceExcludingTax;
+    }
+
+    /**
+     * @param int $totalPriceExcludingTax
+     *
+     * @return $this
+     */
+    public function setTotalPriceExcludingTax($totalPriceExcludingTax) {
+        $this->totalPriceExcludingTax = $totalPriceExcludingTax;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalTaxAmount() {
+        return $this->totalTaxAmount;
+    }
+
+    /**
+     * @param int $totalTaxAmount
+     *
+     * @return $this
+     */
+    public function setTotalTaxAmount($totalTaxAmount) {
+        $this->totalTaxAmount = $totalTaxAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalPriceIncludingTax() {
+        return $this->totalPriceIncludingTax;
+    }
+
+    /**
+     * @param int $totalPriceIncludingTax
+     *
+     * @return $this
+     */
+    public function setTotalPriceIncludingTax($totalPriceIncludingTax) {
+        $this->totalPriceIncludingTax = $totalPriceIncludingTax;
+
+        return $this;
+    }
+
+    /**
+     * @return $this Total price values for all items contained in the order.
+     *
+     * This function should not be run until all items have been added to the order.
+     */
+    public function calculateTotalPrices() {
+        $this->totalPriceExcludingTax = 0;
+        $this->totalTaxAmount = 0;
+        $this->totalPriceIncludingTax = 0;
+
+        foreach($this->getItems() as $key) {
+            $this->totalPriceExcludingTax += ($key->getTotalPriceExcludingTax() * $key->getQuantity());
+            $this->totalTaxAmount += ($key->getTaxRate() * $key->getTotalPriceExcludingTax() / 10000);
+        }
+        $this->totalPriceIncludingTax = ($this->totalPriceExcludingTax + $this->totalTaxAmount);
 
         return $this;
     }

@@ -28,30 +28,28 @@ use Stidner\Model\Order;
  *
  * @package Stidner\Marshaller\ToArray
  */
-class OrderMarshaller implements ToArrayInterface
-{
+class OrderMarshaller implements ToArrayInterface {
     /**
      *
      * @param Order $object
      * @return array
      */
-    public function toArray($object)
-    {
+    public function toArray($object) {
         $merchantMarshaller = new MerchantMarshaller();
         $optionsMarshaller = new OptionsMarshaller();
         $itemMarshaller = new ItemMarshaller();
         $addressMarshaller = new AddressMarshaller();
 
         $data = [
-            'purchase_country'          => $object->getPurchaseCountry(),
-            'purchase_currency'         => $object->getPurchaseCurrency(),
-            'locale'                    => $object->getLocale(),
+            'purchase_country' => $object->getPurchaseCountry(),
+            'purchase_currency' => $object->getPurchaseCurrency(),
+            'locale' => $object->getLocale(),
             'total_price_excluding_tax' => $object->getTotalPriceExcludingTax(),
             'total_price_including_tax' => $object->getTotalPriceIncludingTax(),
-            'total_tax_amount'          => $object->getTotalTaxAmount(),
-            'items'                     => [],
-            'merchant_urls'             => $merchantMarshaller->toArray($object->getMerchantUrls()),
-            'options'                   => $optionsMarshaller->toArray($object->getOptions()),
+            'total_tax_amount' => $object->getTotalTaxAmount(),
+            'items' => [],
+            'merchant_urls' => $merchantMarshaller->toArray($object->getMerchantUrls()),
+            'options' => $optionsMarshaller->toArray($object->getOptions()),
         ];
 
         foreach ($object->getItems() as $item) {
@@ -65,9 +63,9 @@ class OrderMarshaller implements ToArrayInterface
         $optionalParameters = [
             'merchant_reference1' => 'getMerchantReference1',
             'merchant_reference2' => 'getMerchantReference2',
-            'shipment_countries'  => 'getShipmentCountries',
-            'free_shipping'       => 'getFreeShipping',
-            'comment'             => 'getComment',
+            'shipment_countries' => 'getShipmentCountries',
+            'free_shipping' => 'getFreeShipping',
+            'comment' => 'getComment',
         ];
 
         foreach ($optionalParameters as $key => $value) {

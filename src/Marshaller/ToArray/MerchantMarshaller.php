@@ -21,26 +21,24 @@ use Stidner\Interfaces\ToArrayInterface;
 /**
  * Class MerchantMarshaller.
  */
-class MerchantMarshaller implements ToArrayInterface
-{
+class MerchantMarshaller implements ToArrayInterface {
     /**
      * @param $object
      *
      * @return array
      */
-    public function toArray($object)
-    {
+    public function toArray($object) {
         /*
          * @var Merchant $object
          */
         $data = [
-            'terms'        => $object->getTerms(),
-            'checkout'     => $object->getCheckout(),
+            'terms' => $object->getTerms(),
+            'checkout' => $object->getCheckout(),
             'confirmation' => $object->getConfirmation(),
         ];
 
         $optionalParameters = [
-            'push'     => 'getPush',
+            'push' => 'getPush',
             'discount' => 'getDiscount',
         ];
 

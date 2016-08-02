@@ -21,27 +21,25 @@ use Stidner\Interfaces\ToArrayInterface;
 /**
  * Class AddressMarshaller.
  */
-class AddressMarshaller implements ToArrayInterface
-{
+class AddressMarshaller implements ToArrayInterface {
     /**
      * @param $object
      *
      * @return array
      */
-    public function toArray($object)
-    {
+    public function toArray($object) {
         /*
          * @var Address $object
          */
         $data = [
-            'type'            => $object->getType(),
-            'addressLine'     => $object->getAddressLine(),
-            'postalCode'      => $object->getPostalCode(),
-            'city'            => $object->getCity(),
-            'region'          => $object->getRegion(),
-            'phone'           => $object->getPhone(),
-            'email'           => $object->getEmail(),
-            'countryCode'     => $object->getCountryCode(),
+            'type' => $object->getType(),
+            'addressLine' => $object->getAddressLine(),
+            'postalCode' => $object->getPostalCode(),
+            'city' => $object->getCity(),
+            'region' => $object->getRegion(),
+            'phone' => $object->getPhone(),
+            'email' => $object->getEmail(),
+            'countryCode' => $object->getCountryCode(),
         ];
 
         if ($object->getType() === 'business') {
@@ -52,8 +50,8 @@ class AddressMarshaller implements ToArrayInterface
         }
 
         $optionalParameters = [
-            'title'           => 'getTitle',
-            'addressLine2'    => 'getAddressLine2',
+            'title' => 'getTitle',
+            'addressLine2' => 'getAddressLine2',
         ];
 
         foreach ($optionalParameters as $key => $value) {

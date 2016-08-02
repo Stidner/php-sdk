@@ -21,8 +21,23 @@ use Stidner\Interfaces\FromObjectMarshaller;
 /**
  * Class AbstractFromObjectMarshaller.
  */
-abstract class AbstractFromObjectMarshaller implements FromObjectMarshaller
-{
+abstract class AbstractFromObjectMarshaller implements FromObjectMarshaller {
+    /**
+     * @param $destinationClass
+     * @param $object
+     */
+    protected function copyProperties($destinationClass, $object) {
+        if (is_object($object)) {
+            foreach (get_object_vars($object) as $name => $value) {
+                $methodName = 'set' . $this->camelize($name);
+
+                if (method_exists($destinationClass, $methodName)) {
+                    $destinationClass->$methodName($value);
+                }
+            }
+        }
+    }
+
     /**
      * Converts an underscore_separated string to lower-camelCase.
      *
@@ -32,25 +47,7 @@ abstract class AbstractFromObjectMarshaller implements FromObjectMarshaller
      *
      * @return string
      */
-    protected function camelize($input)
-    {
+    protected function camelize($input) {
         return str_replace(' ', '', ucwords(str_replace('_', ' ', $input)));
-    }
-
-    /**
-     * @param $destinationClass
-     * @param $object
-     */
-    protected function copyProperties($destinationClass, $object)
-    {
-        if (is_object($object)) {
-            foreach (get_object_vars($object) as $name => $value) {
-                $methodName = 'set'.$this->camelize($name);
-
-                if (method_exists($destinationClass, $methodName)) {
-                    $destinationClass->$methodName($value);
-                }
-            }
-        }
     }
 }

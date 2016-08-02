@@ -21,28 +21,26 @@ use Stidner\Interfaces\ToArrayInterface;
 /**
  * Class OptionsMarshaller.
  */
-class OptionsMarshaller implements ToArrayInterface
-{
+class OptionsMarshaller implements ToArrayInterface {
     /**
      * @param $object
      *
      * @return array
      */
-    public function toArray($object)
-    {
+    public function toArray($object) {
         /*
          * @var Options $object
          */
         $data = [];
 
         $optionalParameters = [
-            'color_button'              => 'getColorButton',
-            'color_button_text'         => 'getColorButtonText',
-            'color_checkbox'            => 'getColorCheckbox',
+            'color_button' => 'getColorButton',
+            'color_button_text' => 'getColorButtonText',
+            'color_checkbox' => 'getColorCheckbox',
             'color_checkbox_checkmarks' => 'getColorCheckboxCheckmarks',
-            'color_header'              => 'getColorHeader',
-            'color_link'                => 'getColorLink',
-            'color_background'          => 'getColorBackground',
+            'color_header' => 'getColorHeader',
+            'color_link' => 'getColorLink',
+            'color_background' => 'getColorBackground',
         ];
 
         foreach ($optionalParameters as $key => $value) {

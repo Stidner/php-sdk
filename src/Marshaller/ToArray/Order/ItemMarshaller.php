@@ -21,29 +21,27 @@ use Stidner\Interfaces\ToArrayInterface;
 /**
  * Class ItemMarshaller.
  */
-class ItemMarshaller implements ToArrayInterface
-{
+class ItemMarshaller implements ToArrayInterface {
     /**
      * @param $object
      *
      * @return array
      */
-    public function toArray($object)
-    {
+    public function toArray($object) {
         /*
          * @var Item $object
          */
         $data = [
-            'type'                      => $object->getType(),
-            'artno'                     => $object->getArtno(),
-            'name'                      => $object->getName(),
-            'quantity'                  => $object->getQuantity(),
-            'quantity_unit'             => $object->getQuantityUnit(),
-            'unit_price'                => $object->getUnitPrice(),
-            'tax_rate'                  => $object->getTaxRate(),
+            'type' => $object->getType(),
+            'artno' => $object->getArtno(),
+            'name' => $object->getName(),
+            'quantity' => $object->getQuantity(),
+            'quantity_unit' => $object->getQuantityUnit(),
+            'unit_price' => $object->getUnitPrice(),
+            'tax_rate' => $object->getTaxRate(),
             'total_price_excluding_tax' => $object->getTotalPriceExcludingTax(),
             'total_price_including_tax' => $object->getTotalPriceIncludingTax(),
-            'total_tax_amount'          => $object->getTotalTaxAmount(),
+            'total_tax_amount' => $object->getTotalTaxAmount(),
         ];
 
         if ($object->getType() === 'physical') {
@@ -51,9 +49,9 @@ class ItemMarshaller implements ToArrayInterface
         }
 
         $optionalParameters = [
-            'sku'         => 'getSku',
+            'sku' => 'getSku',
             'description' => 'getDescription',
-            'image_url'   => 'getImageUrl',
+            'image_url' => 'getImageUrl',
         ];
 
         foreach ($optionalParameters as $key => $value) {
