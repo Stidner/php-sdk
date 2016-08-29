@@ -661,7 +661,7 @@ class Order
         $this->totalPriceIncludingTax = 0;
 
         foreach ($this->getItems() as $key) {
-            $this->totalPriceExcludingTax += ($key->getTotalPriceExcludingTax() * $key->getQuantity());
+            $this->totalPriceExcludingTax += $key->getTotalPriceExcludingTax();
             $this->totalTaxAmount += ($key->getTaxRate() * $key->getTotalPriceExcludingTax() / 10000);
         }
         $this->totalPriceIncludingTax = ($this->totalPriceExcludingTax + $this->totalTaxAmount);
