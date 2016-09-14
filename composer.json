@@ -2,11 +2,12 @@
   "name": "stidner/php-sdk",
   "description": "Stidner Complete PHP SDK",
   "homepage": "http://developer.stidner.com",
+  "license": "Apache-2.0",
   "authors": [
     {
-      "name": "Stidner AB",
-      "email": "contact@stidner.com",
-      "homepage": "http://stidner.com"
+      "name": "Stidner Complete AB",
+      "email": "integration@stidner.com",
+      "homepage": "https://www.stidner.com"
     }
   ],
   "require": {
