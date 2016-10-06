@@ -92,6 +92,11 @@ class Item
     protected $imageUrl;
 
     /**
+     * @var string
+     */
+    protected $warehouseLocation;
+
+    /**
      * @return string
      */
     public function getType()
@@ -307,6 +312,26 @@ class Item
     public function setImageUrl($imageUrl)
     {
         $this->imageUrl = $imageUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWarehouseLocation()
+    {
+        return $this->warehouseLocation;
+    }
+
+    /**
+     * @param string $warehouseLocation
+     *
+     * @return $this
+     */
+    public function setWarehouseLocation($warehouseLocation)
+    {
+        $this->warehouseLocation = $warehouseLocation;
 
         return $this;
     }

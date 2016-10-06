@@ -51,9 +51,10 @@ class ItemMarshaller implements ToArrayInterface
         }
 
         $optionalParameters = [
-            'sku'         => 'getSku',
-            'description' => 'getDescription',
-            'image_url'   => 'getImageUrl',
+            'sku'                => 'getSku',
+            'description'        => 'getDescription',
+            'image_url'          => 'getImageUrl',
+            'warehouse_location' => 'getWarehouseLocation'
         ];
 
         foreach ($optionalParameters as $key => $value) {
