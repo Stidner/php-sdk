@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 namespace Stidner\Model;
 
 use Stidner\Model\Order\Options;
@@ -82,7 +83,6 @@ class Order
      * @var string
      */
     protected $shipmentProduct;
-
 
     /**
      * @var Address
