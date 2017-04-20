@@ -57,6 +57,31 @@ class Options
     protected $colorBackground;
 
     /**
+     * @var string
+     */
+    protected $colorLinkHover;
+
+    /**
+     * @var string
+     */
+    protected $colorButtonHover;
+
+    /**
+     * @var string
+     */
+    protected $colorDropdownHover;
+
+    /**
+     * @var string
+     */
+    protected $colorDropdownBorder;
+
+    /**
+     * @var string
+     */
+    protected $colorTextboxBorder;
+    
+    /**
      * @return string
      */
     public function getColorButton()
@@ -152,6 +177,106 @@ class Options
     public function setColorHeader($colorHeader)
     {
         $this->colorHeader = $colorHeader;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColorLinkHover()
+    {
+        return $this->colorLinkHover;
+    }
+
+    /**
+     * @param string $colorLinkHover
+     *
+     * @return $this
+     */
+    public function setColorLinkHover($colorLinkHover)
+    {
+        $this->colorLinkHover = $colorLinkHover;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColorButtonHover()
+    {
+        return $this->colorButtonHover;
+    }
+
+    /**
+     * @param string $colorButtonHover
+     *
+     * @return $this
+     */
+    public function setColorButtonHover($colorButtonHover)
+    {
+        $this->colorButtonHover = $colorButtonHover;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColorDropdownHover()
+    {
+        return $this->colorDropdownHover;
+    }
+
+    /**
+     * @param string $colorDropdownHover
+     *
+     * @return $this
+     */
+    public function setColorDropdownHover($colorDropdownHover)
+    {
+        $this->colorDropdownHover = $colorDropdownHover;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColorDropdownBorder()
+    {
+        return $this->colorDropdownBorder;
+    }
+
+    /**
+     * @param string $colorDropdownBorder
+     *
+     * @return $this
+     */
+    public function setColorDropdownBorder($colorDropdownBorder)
+    {
+        $this->colorDropdownBorder = $colorDropdownBorder;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColorTextboxBorder()
+    {
+        return $this->colorTextboxBorder;
+    }
+
+    /**
+     * @param string $colorTextboxBorder
+     *
+     * @return $this
+     */
+    public function setColorTextboxBorder($colorTextboxBorder)
+    {
+        $this->colorTextboxBorder = $colorTextboxBorder;
 
         return $this;
     }

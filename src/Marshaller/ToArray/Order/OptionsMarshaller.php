@@ -43,6 +43,11 @@ class OptionsMarshaller implements ToArrayInterface
             'color_header'              => 'getColorHeader',
             'color_link'                => 'getColorLink',
             'color_background'          => 'getColorBackground',
+            'color_link_hover'          => 'getColorLinkHover',
+            'color_button_hover'        => 'getColorButtonHover',
+            'color_dropdown_hover'      => 'getColorDropdownHover',
+            'color_dropdown_border'     => 'getColorDropdownBorder',
+            'color_textbox_border'      => 'getColorTextboxBorder',
         ];
 
         foreach ($optionalParameters as $key => $value) {
