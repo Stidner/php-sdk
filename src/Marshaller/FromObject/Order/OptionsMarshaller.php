@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 namespace Stidner\Marshaller\FromObject\Order;
 
 use Stidner\Marshaller\FromObject\AbstractFromObjectMarshaller;

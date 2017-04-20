@@ -7,13 +7,11 @@
    read the full Stidner Order API documentation at http://developer.stidner.com/?php-sdk
 */
 
-
 // Include the composer autoloads, or whatever way you prefer.
 require_once 'vendor/autoload.php';
 
 // Initiate an API handle with the login credentials.
 $api_handle = new \Stidner\Api(USER_ID_NUMBER, 'API_KEY');
-
 
 // Set the merchant URLs. First three are required (and can be http), last two are optional (and require https).
 $merchant = new \Stidner\Model\Merchant();
@@ -22,7 +20,6 @@ $merchant->setTerms('http://example.com/terms_of_service.html')
     ->setConfirmation('http://example.com/confirmation.php')
     ->setPush(null)
     ->setDiscount(null);
-
 
 // Optional: customize display elements on checkout.
 // If you don't want to customize, you don't even need this initialized.
@@ -81,7 +78,6 @@ $item[2]->setType('physical')
     ->calculateItemPrice()
     ->setImageUrl('https://example.com/goldshoes.jpg');
 
-
 // Bundle it all together now...
 // Make the main order object, and add everything to it!
 $order = new \Stidner\Model\Order();
@@ -98,7 +94,6 @@ $order->setMerchantReference1(null)
     ->setFreeShipping(true)
     ->setShipmentCountries(['DK', 'SE'])
     ->setOptions($options);
-
 
 // And send it off; remember to properly handle any unlikely exceptions!
 try {
